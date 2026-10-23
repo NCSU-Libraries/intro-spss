@@ -59,7 +59,7 @@ catch up if you fall behind, and come back to it later.
 - **The codebook is in @sec-codebook.** Links marked **↑** or **↓** jump to a variable's row in
   it, and each row links on to the places we use that variable.
 - **Have your phone ready.** You'll confirm your NC State login with Duo more than once.
-- MBA 562: this guide is also in Moodle, and at
+- This guide is online at
   [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
 :::
 
@@ -142,7 +142,8 @@ We focus today on setting up and using the VCL for SPSS.
 ## Download the sample data and codebook
 
 We will be using a sample file from ABC Insurance's employee survey: one row per employee, with
-their demographics, job role, tenure, salary, performance evaluation and survey answers. The
+their demographics, job role, tenure, salary, performance evaluation and survey answers. It's a
+teaching dataset from [SAGE Research Methods Datasets](#sec-references). The
 **codebook** (or data dictionary) tells you what each variable means and how its values are coded.
 It's also in this guide, in @sec-codebook.
 
@@ -682,7 +683,12 @@ you leave, so you can get to it from outside the VCL.
   - A sample walkthrough with a provided dataset. It also covers multiple response sets (for
     "select all that apply" questions) and recoding missing values.
 
-## References {.unnumbered}
+## References {#sec-references .unnumbered}
+
+**The data.** SAGE Publications. ([year]{.tbd}). *[Dataset title, from SAGE's Cite
+tool]{.tbd}* [Data set]. SAGE Research Methods Datasets.
+<https://methods.sagepub.com/dataset/descriptive-stats-hr-data-spss>. NC State students and staff:
+[open it through NC State Libraries](https://methods-sagepub-com.prox.lib.ncsu.edu/dataset/descriptive-stats-hr-data-spss).
 
 Kent State University Libraries. (2017, May 15). *SPSS Tutorials*. Retrieved September 24, 2026,
 from <https://libguides.library.kent.edu/SPSS>
