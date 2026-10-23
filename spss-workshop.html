@@ -2177,6 +2177,13 @@ div.callout-note .callout-title-container { color: #1f4e79; font-weight: 600; }
 div.callout-note .callout-icon::before { filter: hue-rotate(10deg) saturate(1.4); }
 div.callout-note .callout-body-container ol { margin-bottom: 0.25rem; }
 p code, li code, td code { overflow-wrap: anywhere; }
+
+table.codebook { font-size: 0.875rem; }
+table.codebook td, table.codebook th { vertical-align: top; }
+table.codebook td:first-child { font-weight: 600; white-space: nowrap; }
+table.codebook td:nth-child(3), table.codebook td:last-child { white-space: nowrap; }
+@media (max-width: 700px) { table.codebook td { white-space: normal !important; } }
+span[id^="cb-"]:target, tr:has(span[id^="cb-"]:target) td { background: #fef3c7; }
 </style>
 
   <script>/*
@@ -2340,28 +2347,29 @@ window.Quarto = {
   <li><a href="#download-the-sample-data-and-codebook" id="toc-download-the-sample-data-and-codebook" class="nav-link" data-scroll-target="#download-the-sample-data-and-codebook"><span class="header-section-number">1.2</span> Download the sample data and codebook</a></li>
   <li><a href="#load-your-data" id="toc-load-your-data" class="nav-link" data-scroll-target="#load-your-data"><span class="header-section-number">1.3</span> Load your data</a></li>
   </ul></li>
-  <li><a href="#sec-variables" id="toc-sec-variables" class="nav-link" data-scroll-target="#sec-variables"><span class="header-section-number">2</span> Reviewing variables</a>
+  <li><a href="#sec-codebook" id="toc-sec-codebook" class="nav-link" data-scroll-target="#sec-codebook"><span class="header-section-number">2</span> The codebook</a></li>
+  <li><a href="#sec-variables" id="toc-sec-variables" class="nav-link" data-scroll-target="#sec-variables"><span class="header-section-number">3</span> Reviewing variables</a>
   <ul class="collapse">
-  <li><a href="#coding-missing-values" id="toc-coding-missing-values" class="nav-link" data-scroll-target="#coding-missing-values"><span class="header-section-number">2.1</span> Coding missing values</a></li>
-  <li><a href="#coding-values-for-categorical-variables" id="toc-coding-values-for-categorical-variables" class="nav-link" data-scroll-target="#coding-values-for-categorical-variables"><span class="header-section-number">2.2</span> Coding values for categorical variables</a></li>
+  <li><a href="#sec-missing" id="toc-sec-missing" class="nav-link" data-scroll-target="#sec-missing"><span class="header-section-number">3.1</span> Coding missing values</a></li>
+  <li><a href="#sec-values" id="toc-sec-values" class="nav-link" data-scroll-target="#sec-values"><span class="header-section-number">3.2</span> Coding values for categorical variables</a></li>
   </ul></li>
-  <li><a href="#sec-descriptive" id="toc-sec-descriptive" class="nav-link" data-scroll-target="#sec-descriptive"><span class="header-section-number">3</span> Descriptive statistics</a>
+  <li><a href="#sec-descriptive" id="toc-sec-descriptive" class="nav-link" data-scroll-target="#sec-descriptive"><span class="header-section-number">4</span> Descriptive statistics</a>
   <ul class="collapse">
-  <li><a href="#frequency-of-a-categorical-variable" id="toc-frequency-of-a-categorical-variable" class="nav-link" data-scroll-target="#frequency-of-a-categorical-variable"><span class="header-section-number">3.1</span> Frequency of a categorical variable</a></li>
-  <li><a href="#frequency-of-a-scale-variable" id="toc-frequency-of-a-scale-variable" class="nav-link" data-scroll-target="#frequency-of-a-scale-variable"><span class="header-section-number">3.2</span> Frequency of a scale variable</a></li>
-  <li><a href="#two-categorical-variables-together" id="toc-two-categorical-variables-together" class="nav-link" data-scroll-target="#two-categorical-variables-together"><span class="header-section-number">3.3</span> Two categorical variables together</a></li>
+  <li><a href="#sec-freq-cat" id="toc-sec-freq-cat" class="nav-link" data-scroll-target="#sec-freq-cat"><span class="header-section-number">4.1</span> Frequency of a categorical variable</a></li>
+  <li><a href="#sec-freq-scale" id="toc-sec-freq-scale" class="nav-link" data-scroll-target="#sec-freq-scale"><span class="header-section-number">4.2</span> Frequency of a scale variable</a></li>
+  <li><a href="#sec-crosstabs" id="toc-sec-crosstabs" class="nav-link" data-scroll-target="#sec-crosstabs"><span class="header-section-number">4.3</span> Two categorical variables together</a></li>
   </ul></li>
-  <li><a href="#sec-inferential" id="toc-sec-inferential" class="nav-link" data-scroll-target="#sec-inferential"><span class="header-section-number">4</span> Inferential statistics</a>
+  <li><a href="#sec-inferential" id="toc-sec-inferential" class="nav-link" data-scroll-target="#sec-inferential"><span class="header-section-number">5</span> Inferential statistics</a>
   <ul class="collapse">
-  <li><a href="#correlation-tables" id="toc-correlation-tables" class="nav-link" data-scroll-target="#correlation-tables"><span class="header-section-number">4.1</span> Correlation tables</a></li>
-  <li><a href="#comparing-means" id="toc-comparing-means" class="nav-link" data-scroll-target="#comparing-means"><span class="header-section-number">4.2</span> Comparing means</a></li>
-  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">4.3</span> Simple linear regression</a></li>
+  <li><a href="#sec-correlation" id="toc-sec-correlation" class="nav-link" data-scroll-target="#sec-correlation"><span class="header-section-number">5.1</span> Correlation tables</a></li>
+  <li><a href="#comparing-means" id="toc-comparing-means" class="nav-link" data-scroll-target="#comparing-means"><span class="header-section-number">5.2</span> Comparing means</a></li>
+  <li><a href="#sec-regression" id="toc-sec-regression" class="nav-link" data-scroll-target="#sec-regression"><span class="header-section-number">5.3</span> Simple linear regression</a></li>
   </ul></li>
-  <li><a href="#sec-export" id="toc-sec-export" class="nav-link" data-scroll-target="#sec-export"><span class="header-section-number">5</span> Exporting output</a>
+  <li><a href="#sec-export" id="toc-sec-export" class="nav-link" data-scroll-target="#sec-export"><span class="header-section-number">6</span> Exporting output</a>
   <ul class="collapse">
-  <li><a href="#save-your-files-and-leave-the-vcl" id="toc-save-your-files-and-leave-the-vcl" class="nav-link" data-scroll-target="#save-your-files-and-leave-the-vcl"><span class="header-section-number">5.1</span> Save your files and leave the VCL</a></li>
+  <li><a href="#save-your-files-and-leave-the-vcl" id="toc-save-your-files-and-leave-the-vcl" class="nav-link" data-scroll-target="#save-your-files-and-leave-the-vcl"><span class="header-section-number">6.1</span> Save your files and leave the VCL</a></li>
   </ul></li>
-  <li><a href="#sec-resources" id="toc-sec-resources" class="nav-link" data-scroll-target="#sec-resources"><span class="header-section-number">6</span> SPSS resources</a>
+  <li><a href="#sec-resources" id="toc-sec-resources" class="nav-link" data-scroll-target="#sec-resources"><span class="header-section-number">7</span> SPSS resources</a>
   <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
@@ -2433,8 +2441,9 @@ Conventions:
 <p>This is the page we work from in the session. Every step is written out, so you can follow along, catch up if you fall behind, and come back to it later.</p>
 <ul>
 <li><strong>Steps are in blue boxes</strong> titled with where you do them: <em>In your browser</em>, <em>In the VCL</em> or <em>In SPSS</em>. Everything outside a box explains what the steps do and how to read the results.</li>
+<li><strong>The codebook is in <a href="#sec-codebook" class="quarto-xref">Section 2</a>.</strong> Links marked <strong>↑</strong> or <strong>↓</strong> jump to a variable’s row in it, and each row links on to the places we use that variable.</li>
 <li><strong>Have your phone ready.</strong> You’ll confirm your NC State login with Duo more than once.</li>
-<li>MBA 562: this guide is also in Moodle, and at <span class="tbd">go.ncsu.edu/mba562-spss (new link needed)</span>.</li>
+<li>MBA 562: this guide is also in Moodle, and at <a href="https://ncsu-libraries.github.io/intro-spss/">ncsu-libraries.github.io/intro-spss</a>.</li>
 </ul>
 </div>
 </div>
@@ -2453,12 +2462,12 @@ Conventions:
 <h2 class="unnumbered anchored" data-anchor-id="agenda">Agenda</h2>
 <ol type="1">
 <li>Access SPSS through the VCL (<a href="#sec-access" class="quarto-xref">Section 1</a>).</li>
-<li>Download the dataset and its codebook within the VCL. Normally you would do this outside the VCL, but we shortcut a step here for time’s sake.</li>
+<li>Download the dataset and its codebook within the VCL, and read the codebook (<a href="#sec-codebook" class="quarto-xref">Section 2</a>). Normally you would download outside the VCL, but we shortcut a step here for time’s sake.</li>
 <li>Open SPSS and review its interface.</li>
-<li>Examine the dataset: variable types, measurement levels, missing values and value labels (<a href="#sec-variables" class="quarto-xref">Section 2</a>).</li>
-<li>Run descriptive statistics and make graphs: a bar chart, a histogram and a crosstab (<a href="#sec-descriptive" class="quarto-xref">Section 3</a>).</li>
-<li>Run inferential tests: a correlation, a one-way ANOVA and a simple linear regression (<a href="#sec-inferential" class="quarto-xref">Section 4</a>). T-tests and normality checks are in the <a href="#sec-appendix">Appendix</a>.</li>
-<li>Export results (<a href="#sec-export" class="quarto-xref">Section 5</a>).</li>
+<li>Examine the dataset: variable types, measurement levels, missing values and value labels (<a href="#sec-variables" class="quarto-xref">Section 3</a>).</li>
+<li>Run descriptive statistics and make graphs: a bar chart, a histogram and a crosstab (<a href="#sec-descriptive" class="quarto-xref">Section 4</a>).</li>
+<li>Run inferential tests: a correlation, a one-way ANOVA and a simple linear regression (<a href="#sec-inferential" class="quarto-xref">Section 5</a>). T-tests and normality checks are in the <a href="#sec-appendix">Appendix</a>.</li>
+<li>Export results (<a href="#sec-export" class="quarto-xref">Section 6</a>).</li>
 <li>Store exports in cloud storage and exit the VCL. We may not practice this in class.</li>
 </ol>
 <hr>
@@ -2535,7 +2544,7 @@ Conventions:
 </section>
 <section id="download-the-sample-data-and-codebook" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="download-the-sample-data-and-codebook"><span class="header-section-number">1.2</span> Download the sample data and codebook</h2>
-<p>We will be using a sample file from ABC Insurance’s employee survey: one row per employee, with their demographics, job role, tenure, salary, performance evaluation and survey answers. The <strong>codebook</strong> (or data dictionary) tells you what each variable means and how its values are coded. Keep it open while you work.</p>
+<p>We will be using a sample file from ABC Insurance’s employee survey: one row per employee, with their demographics, job role, tenure, salary, performance evaluation and survey answers. The <strong>codebook</strong> (or data dictionary) tells you what each variable means and how its values are coded. It’s also in this guide, in <a href="#sec-codebook" class="quarto-xref">Section 2</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2547,7 +2556,8 @@ Conventions:
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open a web browser and download the sample file and its codebook at <span class="tbd">go.ncsu.edu/mba562-sample (new link needed)</span>. If that link doesn’t work, download <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav">TeachingData.sav</a> and the <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx">SPSS Codebook</a> from GitHub.</li>
+<li>In the VCL, open a web browser and go to this guide: <a href="https://ncsu-libraries.github.io/intro-spss/">ncsu-libraries.github.io/intro-spss</a>.</li>
+<li>Click these links to download the data file and its codebook: <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav">TeachingData.sav</a> and <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx">SPSS Codebook.xlsx</a>.</li>
 <li>Notice the data file is named <strong>TeachingData.sav</strong> and the codebook is named <strong>SPSS Codebook</strong>.</li>
 <li>Open <strong>File Explorer</strong> and make sure you can find where the dataset and codebook were downloaded. Most likely they’re in the Downloads folder of your VCL login: <strong>This PC &gt; C: &gt; Users &gt; [your Unity ID] &gt; Downloads</strong>.</li>
 </ol>
@@ -2593,13 +2603,99 @@ Conventions:
 <div class="placeholder">
 <p><strong>Screenshot to take: <code>images/data-open-dialog.png</code>.</strong> SPSS’s Open Data dialog, Look in set to the Downloads folder, with TeachingData.sav selected.</p>
 </div>
-<p>In the next section we review an important practice: when you import data, always double-check that the data types are correct.</p>
+<p>Before you analyze anything, read the codebook (<a href="#sec-codebook" class="quarto-xref">Section 2</a>). Then, in <a href="#sec-variables" class="quarto-xref">Section 3</a>, we review an important practice: when you import data, always double-check that the data types are correct.</p>
 <hr>
 </section>
 </section>
-<section id="sec-variables" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Reviewing variables</h1>
-<p>The <strong>Variable View</strong> tab is not your data; it’s metadata about your data. Review your data in this tab before doing any analysis, to make sure SPSS read your data in correctly and that you understand the variables you are working with.</p>
+<section id="sec-codebook" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The codebook</h1>
+<p>A <strong>codebook</strong> (or data dictionary) describes every variable in a dataset: its name, its type, what it means, how its values are coded and how it is measured. It’s how you know that a 2 in Gender means Male, or that 99 in Evaluation means “no evaluation”. Check it before you trust anything SPSS shows you.</p>
+<p>This is the codebook for TeachingData.sav, the same as <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx">SPSS Codebook.xlsx</a>. All nine variables are Numeric. The last column links down to where we use each variable, and <strong>↑</strong> links later in the guide bring you back to its row here.</p>
+<table class="codebook caption-top table">
+<caption>The codebook for TeachingData.sav.</caption>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Label</th>
+<th>Values</th>
+<th>Measure</th>
+<th>Where we use it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span id="cb-ethnicity">Ethnicity</span></td>
+<td>Refers to the employee’s ethnicity. In order to meet diversity objectives, ABC Insurance Co. is mandated to report five ethnic categories.</td>
+<td>0 = White<br>1 = Black<br>2 = Asian<br>3 = Latino<br>4 = Other</td>
+<td>Nominal</td>
+<td>Not used today</td>
+</tr>
+<tr class="even">
+<td><span id="cb-gender">Gender</span></td>
+<td>Refers to the employee’s gender.</td>
+<td>1 = Female<br>2 = Male</td>
+<td>Nominal</td>
+<td><a href="#sec-variables">Reviewing variables</a> ↓<br><a href="#sec-crosstabs">Crosstab</a> ↓<br><a href="#sec-ttest">Independent t test</a> ↓</td>
+</tr>
+<tr class="odd">
+<td><span id="cb-jobrole">JobRole</span></td>
+<td>Refers to the employee’s current position category within ABC Insurance company. This is a fluid variable that changes when the employee changes their job role.</td>
+<td>0 = administrative<br>1 = customer service<br>2 = coordinator<br>3 = junior account manager<br>4 = senior account manager<br>5 = assistant branch manager<br>6 = branch manager<br>7 = executive</td>
+<td>Ordinal</td>
+<td><a href="#sec-crosstabs">Crosstab</a> ↓<br><a href="#sec-anova">One-way ANOVA</a> ↓</td>
+</tr>
+<tr class="even">
+<td><span id="cb-age">Age</span></td>
+<td>Is simply the current age of the employee, recorded in years.</td>
+<td>Missing values are coded as “.”</td>
+<td>Scale</td>
+<td><a href="#sec-missing">Missing values</a> ↓</td>
+</tr>
+<tr class="odd">
+<td><span id="cb-tenure">Tenure</span></td>
+<td>Refers to the number of years the employee has worked with ABC Insurance company. This is measured in years, rounded up.</td>
+<td></td>
+<td>Scale</td>
+<td><a href="#sec-freq-scale">Histogram</a> ↓<br><a href="#sec-correlation">Correlation</a> ↓<br><a href="#sec-regression">Regression</a> ↓<br><a href="#sec-ttest">Independent t test</a> ↓<br><a href="#sec-onesample">One-sample t test</a> ↓</td>
+</tr>
+<tr class="even">
+<td><span id="cb-salarycontinuous">SalaryContinuous</span></td>
+<td>Refers to employee’s annual salary, capturing the employee’s specific annual salary.</td>
+<td></td>
+<td>Scale</td>
+<td><a href="#sec-correlation">Correlation</a> ↓<br><a href="#sec-anova">One-way ANOVA</a> ↓<br><a href="#sec-regression">Regression</a> ↓<br><a href="#sec-normality">Normality check</a> ↓</td>
+</tr>
+<tr class="odd">
+<td><span id="cb-evaluation">Evaluation</span></td>
+<td>A confidential score assigned to an employee based on their previous year’s (or most recent) performance evaluation by their respective supervisor.</td>
+<td>1 = poor<br>2 = slightly underperformed<br>3 = met expectations<br>4 = slightly exceeded expectations<br>5 = excellent<br>Missing values are coded as “99”</td>
+<td>Ordinal</td>
+<td><a href="#sec-variables">Reviewing variables</a> ↓<br><a href="#sec-missing">Missing values</a> ↓<br><a href="#sec-values">Value labels</a> ↓<br><a href="#sec-freq-cat">Bar chart</a> ↓</td>
+</tr>
+<tr class="even">
+<td><span id="cb-intentiontoquit">IntentiontoQuit</span></td>
+<td>The likelihood/probability that an employee will search for another position (actively) over the next 12 months.</td>
+<td>1 = extremely unlikely<br>2 = somewhat likely<br>3 = not sure<br>4 = somewhat unlikely<br>5 = extremely likely</td>
+<td>Ordinal</td>
+<td>Not used today</td>
+</tr>
+<tr class="odd">
+<td><span id="cb-jobsatisfaction">JobSatisfaction</span></td>
+<td>Measuring how satisfied employees currently are working at ABC Insurance Co.</td>
+<td>1 = extremely unsatisfied<br>2 = somewhat unsatisfied<br>3 = neither satisfied nor dissatisfied<br>4 = somewhat satisfied<br>5 = extremely satisfied</td>
+<td>Ordinal</td>
+<td>Not used today</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>Compare the Measure column here with what SPSS shows in <a href="#sec-variables" class="quarto-xref">Section 3</a>. Do they agree?</p>
+</blockquote>
+<hr>
+</section>
+<section id="sec-variables" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Reviewing variables</h1>
+<p>The <strong>Variable View</strong> tab is not your data; it’s metadata about your data. Review your data in this tab before doing any analysis, to make sure SPSS read your data in correctly and that you understand the variables you are working with. Compare what you see with the <a href="#sec-codebook">codebook ↑</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2638,7 +2734,7 @@ Conventions:
 <blockquote class="blockquote">
 <p>After reviewing the variables in Variable View, you might notice it can be improved. What are some things you find problematic?</p>
 </blockquote>
-<p>You can edit any of these settings. For example, if a variable has been wrongly identified as Nominal, you can select the correct Measure from the dropdown.</p>
+<p>You can edit any of these settings. For example, if a variable has been wrongly identified as Nominal, you can select the correct Measure from the dropdown. The codebook says Gender is Nominal (<a href="#cb-gender">codebook ↑</a>) and Evaluation is Ordinal (<a href="#cb-evaluation">codebook ↑</a>), but SPSS has them the other way around.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2661,9 +2757,9 @@ Conventions:
 <figcaption>The corrected Measure column.</figcaption>
 </figure>
 </div>
-<section id="coding-missing-values" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="coding-missing-values"><span class="header-section-number">2.1</span> Coding missing values</h2>
-<p>In <strong>Data View</strong>, a “.” in a cell means the value is already coded as <em>system-missing</em>, and you don’t have to do anything. But some datasets use a number as a missing-value code instead. In the SPSS Codebook, Evaluation’s values are defined from 1 to 5, yet some rows have <strong>99</strong>. Those 99s are missing values. Unless you tell SPSS so, it treats 99 as a real score and includes it in your analysis.</p>
+<section id="sec-missing" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-missing"><span class="header-section-number">3.1</span> Coding missing values</h2>
+<p>In <strong>Data View</strong>, a “.” in a cell means the value is already coded as <em>system-missing</em>, and you don’t have to do anything; Age has some (<a href="#cb-age">codebook ↑</a>). But some datasets use a number as a missing-value code instead. In the codebook, Evaluation’s values are defined from 1 to 5 (<a href="#cb-evaluation">codebook ↑</a>), yet some rows have <strong>99</strong>. Those 99s are missing values. Unless you tell SPSS so, it treats 99 as a real score and includes it in your analysis.</p>
 <div class="placeholder">
 <p><strong>Screenshot to take: <code>images/missing-99-data-view.png</code>.</strong> Data View scrolled so the Evaluation column shows a few 99 values among the 1–5 scores (and, if possible, a “.” in Age).</p>
 </div>
@@ -2762,8 +2858,8 @@ Conventions:
 <p>When thinking about your own data’s variables, how will missing values be coded?</p>
 </blockquote>
 </section>
-<section id="coding-values-for-categorical-variables" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="coding-values-for-categorical-variables"><span class="header-section-number">2.2</span> Coding values for categorical variables</h2>
+<section id="sec-values" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-values"><span class="header-section-number">3.2</span> Coding values for categorical variables</h2>
 <p>If you import a survey without defined Values for its categorical variables, you may need to enter the value labels yourself. Evaluation has no labels yet: its Values cell says None.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2776,7 +2872,7 @@ Conventions:
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open the data dictionary (the SPSS Codebook) to find the values and labels for each variable.</li>
+<li>Look up Evaluation’s values and labels in the codebook (<a href="#cb-evaluation">codebook ↑</a>).</li>
 <li>In <strong>Variable View</strong>, click the <strong>Values</strong> cell for <strong>Evaluation</strong>, then the <strong>…</strong> button to the right of the cell.</li>
 <li>To code a new value, click the <strong>+</strong> button. Evaluation has 5 values, 1 through 5, so click it 5 times.</li>
 <li>Enter the value and label for each: 1 is <em>poor</em>, 2 is <em>slightly underperformed</em>, 3 is <em>met expectations</em>, 4 is <em>slightly exceeded expectations</em> and 5 is <em>excellent</em>.</li>
@@ -2800,10 +2896,10 @@ Conventions:
 <hr>
 </section>
 </section>
-<section id="sec-descriptive" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Descriptive statistics</h1>
-<section id="frequency-of-a-categorical-variable" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="frequency-of-a-categorical-variable"><span class="header-section-number">3.1</span> Frequency of a categorical variable</h2>
+<section id="sec-descriptive" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Descriptive statistics</h1>
+<section id="sec-freq-cat" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-freq-cat"><span class="header-section-number">4.1</span> Frequency of a categorical variable</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2816,7 +2912,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Descriptive Statistics &gt; Frequencies</strong>.</li>
-<li>Select one or more nominal or ordinal variables, such as <strong>Evaluation</strong>.</li>
+<li>Select one or more nominal or ordinal variables, such as <strong>Evaluation</strong> (<a href="#cb-evaluation">codebook ↑</a>).</li>
 <li>Click <strong>Statistics</strong>, select the options you want to see, and click <strong>Continue</strong>.
 <ul>
 <li>For a nominal variable like Gender, select <strong>Mode</strong> only.</li>
@@ -2873,8 +2969,8 @@ Conventions:
 </figure>
 </div>
 </section>
-<section id="frequency-of-a-scale-variable" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="frequency-of-a-scale-variable"><span class="header-section-number">3.2</span> Frequency of a scale variable</h2>
+<section id="sec-freq-scale" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-freq-scale"><span class="header-section-number">4.2</span> Frequency of a scale variable</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2887,7 +2983,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Descriptive Statistics &gt; Frequencies</strong>. Click <strong>Reset</strong> if Evaluation is still selected.</li>
-<li>Select one or more scale variables, such as <strong>Tenure</strong>.</li>
+<li>Select one or more scale variables, such as <strong>Tenure</strong> (<a href="#cb-tenure">codebook ↑</a>).</li>
 <li>Click <strong>Statistics</strong> and select the options you want under Percentile Values, Central Tendency, Distribution and Dispersion. Here we choose <strong>Mean</strong>, <strong>Median</strong> and <strong>Mode</strong> under Central Tendency, and <strong>Std. deviation</strong> and <strong>Range</strong> under Dispersion.</li>
 <li>Click <strong>Continue</strong>.</li>
 <li>To make a graph as well as a table, click <strong>Charts</strong>, select <strong>Histograms</strong>, check <strong>Show normal curve on histogram</strong>, and click <strong>Continue</strong>.</li>
@@ -2917,8 +3013,8 @@ Conventions:
 </figure>
 </div>
 </section>
-<section id="two-categorical-variables-together" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="two-categorical-variables-together"><span class="header-section-number">3.3</span> Two categorical variables together</h2>
+<section id="sec-crosstabs" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-crosstabs"><span class="header-section-number">4.3</span> Two categorical variables together</h2>
 <p><strong>Cross-tabulations</strong>, also known as crosstabs, show how often responses to two categorical variables (nominal or ordinal) occur together. Each crosstab has a row variable and a column variable: each row is a level of the row variable, and each column a level of the column variable. To determine whether the two variables are associated, we can run a <strong>chi-square test</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2932,7 +3028,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Descriptive Statistics &gt; Crosstabs</strong>.</li>
-<li>Move one categorical variable into <strong>Row(s)</strong> (<strong>JobRole</strong>) and one into <strong>Column(s)</strong> (<strong>Gender</strong>).</li>
+<li>Move one categorical variable into <strong>Row(s)</strong> (<strong>JobRole</strong> (<a href="#cb-jobrole">codebook ↑</a>)) and one into <strong>Column(s)</strong> (<strong>Gender</strong> (<a href="#cb-gender">codebook ↑</a>)).</li>
 <li>Click <strong>Statistics</strong>, select <strong>Chi-square</strong>, then click <strong>Continue</strong> and <strong>OK</strong>.</li>
 </ol>
 </div>
@@ -2954,11 +3050,11 @@ Conventions:
 <hr>
 </section>
 </section>
-<section id="sec-inferential" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Inferential statistics</h1>
+<section id="sec-inferential" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Inferential statistics</h1>
 <p>You can run any test in SPSS and receive output, but a variable <strong>should</strong> first be checked for a normal distribution before you run an inferential test that assumes one. A normal distribution forms a symmetrical, bell-shaped curve where most values cluster around a central average and taper off equally on both sides. Normality testing applies to continuous variables only. In this section we assume the data are normal; <a href="#sec-normality">Checking normality</a> in the Appendix shows how to test it with Explore.</p>
-<section id="correlation-tables" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="correlation-tables"><span class="header-section-number">4.1</span> Correlation tables</h2>
+<section id="sec-correlation" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-correlation"><span class="header-section-number">5.1</span> Correlation tables</h2>
 <p>A correlation table shows the strength and direction of the relationships between pairs of variables. The Pearson correlation requires two or more continuous variables.</p>
 <p>The correlation coefficient (<em>r</em>) can be positive or negative, and ranges from −1 to 1:</p>
 <ul>
@@ -2980,7 +3076,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Correlate &gt; Bivariate</strong>.</li>
-<li>Move <strong>Tenure</strong> and <strong>SalaryContinuous</strong> into the <strong>Variables</strong> box.</li>
+<li>Move <strong>Tenure</strong> (<a href="#cb-tenure">codebook ↑</a>) and <strong>SalaryContinuous</strong> (<a href="#cb-salarycontinuous">codebook ↑</a>) into the <strong>Variables</strong> box.</li>
 <li>Check <strong>Pearson</strong> under Correlation Coefficients.</li>
 <li>Check <strong>Flag significant correlations</strong> to mark important results.</li>
 <li>Click <strong>OK</strong> to run the test.</li>
@@ -3001,8 +3097,8 @@ Conventions:
 </div>
 <p>The correlation coefficient is .527, which suggests that Tenure and SalaryContinuous are positively correlated. The three asterisks (***) next to the coefficient mean it is significant at the p &lt; 0.001 level, as the footnote under the table says.</p>
 </section>
-<section id="comparing-means" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="comparing-means"><span class="header-section-number">4.2</span> Comparing means</h2>
+<section id="comparing-means" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="comparing-means"><span class="header-section-number">5.2</span> Comparing means</h2>
 <p>The Independent-Samples T Test, One-Sample T Test and One-Way ANOVA compare means and determine whether an observed difference is statistically significant.</p>
 <ul>
 <li>A <strong>One-Sample T Test</strong> compares a sample mean with a known value.</li>
@@ -3010,8 +3106,8 @@ Conventions:
 <li>A <strong>One-Way ANOVA</strong> compares the means of three or more groups.</li>
 </ul>
 <p>All of these are under <strong>Analyze &gt; Compare Means and Proportions</strong>. Here we use a one-way ANOVA to illustrate the family. The <a href="#sec-appendix">Appendix</a> shows the <a href="#sec-ttest">independent-samples t test</a> and the <a href="#sec-onesample">one-sample t test</a>.</p>
-<section id="one-way-anova" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="one-way-anova"><span class="header-section-number">4.2.1</span> One-way ANOVA</h3>
+<section id="sec-anova" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-anova"><span class="header-section-number">5.2.1</span> One-way ANOVA</h3>
 <p>ANOVA stands for ANalysis Of VAriance. A one-way ANOVA compares the means of two or more independent groups to determine whether there is statistical evidence that the associated population means are significantly different. You need two variables for this test:</p>
 <ul>
 <li>A <strong>dependent variable</strong> that is continuous (interval or ratio level).</li>
@@ -3021,7 +3117,7 @@ Conventions:
 <p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k \quad \text{(all } k \text{ population means are equal)}\]</span></p>
 <p><span class="math display">\[H_1: \text{at least one } \mu_i \text{ is different} \quad \text{(at least one of the } k \text{ population means is not equal to the others)}\]</span></p>
 <p>where <span class="math inline">\(\mu_i\)</span> is the population mean of the <span class="math inline">\(i^{th}\)</span> group, <span class="math inline">\(i = 1, \dots, k\)</span>.</p>
-<p>In the sample dataset, <strong>SalaryContinuous</strong> is an employee’s annual salary, and <strong>JobRole</strong> is the employee’s current position within ABC Insurance. Let’s use ANOVA to test whether salary differs significantly by job role. SalaryContinuous is the dependent variable and JobRole is the independent variable.</p>
+<p>In the sample dataset, <strong>SalaryContinuous</strong> is an employee’s annual salary (<a href="#cb-salarycontinuous">codebook ↑</a>), and <strong>JobRole</strong> is the employee’s current position within ABC Insurance (<a href="#cb-jobrole">codebook ↑</a>). Let’s use ANOVA to test whether salary differs significantly by job role. SalaryContinuous is the dependent variable and JobRole is the independent variable.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3055,8 +3151,8 @@ Conventions:
 <p>We conclude that mean salary differs significantly across at least one of the job roles (<span class="math inline">\(F_{7,928} = 636.917,\ p &lt; 0.001\)</span>). The ANOVA alone doesn’t tell us <em>which</em> means differ. To find out, follow up with multiple comparison (post hoc) tests, from the <strong>Post Hoc</strong> button in the One-Way ANOVA dialog.</p>
 </section>
 </section>
-<section id="simple-linear-regression" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">4.3</span> Simple linear regression</h2>
+<section id="sec-regression" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-regression"><span class="header-section-number">5.3</span> Simple linear regression</h2>
 <p>Linear regression models the relationship between one independent (“explanatory”) variable and a dependent (“response”) variable by analyzing many observations. The model can then be used to predict and inform future behavior with a degree of statistical confidence. The equation for a simple linear regression (SLR) is:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1 x + \epsilon\]</span></p>
 <p>where:</p>
@@ -3068,7 +3164,7 @@ Conventions:
 <li><span class="math inline">\(\epsilon\)</span>: the error term</li>
 </ul>
 <p>In simple terms, if you plot a number of data points on a graph to see whether they form a straight line, the SLR is the line of best fit for those points.</p>
-<p>For example, we want to model and test whether Tenure predicts Salary. The dependent variable is SalaryContinuous and the independent variable is Tenure, so our model is:</p>
+<p>For example, we want to model and test whether Tenure (<a href="#cb-tenure">codebook ↑</a>) predicts Salary (<a href="#cb-salarycontinuous">codebook ↑</a>). The dependent variable is SalaryContinuous and the independent variable is Tenure, so our model is:</p>
 <p><span class="math display">\[\text{SalaryContinuous} = \beta_0 + \beta_1 \, \text{Tenure} + \epsilon\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -3108,8 +3204,8 @@ Conventions:
 <hr>
 </section>
 </section>
-<section id="sec-export" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Exporting output</h1>
+<section id="sec-export" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Exporting output</h1>
 <p>Once you’ve run the analyses you’re interested in, you can export them to a document file.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -3156,8 +3252,8 @@ Conventions:
 <p>If you save your output on the VCL, move it into Google Drive (or other cloud storage) before you leave, so you can get to it from outside the VCL.</p>
 </div>
 </div>
-<section id="save-your-files-and-leave-the-vcl" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="save-your-files-and-leave-the-vcl"><span class="header-section-number">5.1</span> Save your files and leave the VCL</h2>
+<section id="save-your-files-and-leave-the-vcl" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="save-your-files-and-leave-the-vcl"><span class="header-section-number">6.1</span> Save your files and leave the VCL</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3177,8 +3273,8 @@ Conventions:
 <hr>
 </section>
 </section>
-<section id="sec-resources" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> SPSS resources</h1>
+<section id="sec-resources" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> SPSS resources</h1>
 <ul>
 <li><strong>Get NC State in-person access and live help with SPSS:</strong> <a href="http://go.ncsu.edu/getdatahelp">go.ncsu.edu/getdatahelp</a>
 <ul>
@@ -3226,7 +3322,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Descriptive Statistics &gt; Explore</strong>.</li>
-<li>Move a scale variable, such as <strong>SalaryContinuous</strong>, to the <strong>Dependent List</strong>. Click the <strong>Plots</strong> button.</li>
+<li>Move a scale variable, such as <strong>SalaryContinuous</strong> (<a href="#cb-salarycontinuous">codebook ↑</a>), to the <strong>Dependent List</strong>. Click the <strong>Plots</strong> button.</li>
 <li>In the Plots dialog, check <strong>Normality plots with tests</strong>. This adds the Shapiro-Wilk and Kolmogorov-Smirnov tests and Q-Q plots.</li>
 <li>Click <strong>Continue</strong> to return to the main dialog.</li>
 <li>Click <strong>OK</strong>.</li>
@@ -3274,9 +3370,9 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Compare Means and Proportions &gt; Independent-Samples T Test</strong>.</li>
-<li>Move a quantitative variable into <strong>Test Variable(s)</strong>, such as <strong>Tenure</strong>. This is the dependent variable.</li>
+<li>Move a quantitative variable into <strong>Test Variable(s)</strong>, such as <strong>Tenure</strong> (<a href="#cb-tenure">codebook ↑</a>). This is the dependent variable.</li>
 <li>Move a categorical variable into <strong>Grouping Variable</strong>, such as <strong>Gender</strong>. This is the independent variable.</li>
-<li>Click <strong>Define Groups</strong> and fill in the codes for the two categories you want to compare. Female is 1 and male is 2, so put <strong>1</strong> in Group 1 and <strong>2</strong> in Group 2. Click <strong>Continue</strong>.</li>
+<li>Click <strong>Define Groups</strong> and fill in the codes for the two categories you want to compare. Female is 1 and male is 2 (<a href="#cb-gender">codebook ↑</a>), so put <strong>1</strong> in Group 1 and <strong>2</strong> in Group 2. Click <strong>Continue</strong>.</li>
 <li>Check <strong>Homogeneity of variance test</strong>, so the output includes Levene’s test.</li>
 <li>Click <strong>Options</strong> and check that the Confidence Interval Percentage is <strong>95</strong>. That means your alpha (what you compare your p-value to for statistical significance) is 0.05 (5%). Click <strong>Continue</strong>.</li>
 <li>Click <strong>OK</strong>.</li>
@@ -3346,7 +3442,7 @@ Conventions:
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Click <strong>Analyze &gt; Compare Means and Proportions &gt; One-Sample T Test</strong>.</li>
-<li>Move your continuous test variable, such as <strong>Tenure</strong>, into the <strong>Test Variable(s)</strong> box.</li>
+<li>Move your continuous test variable, such as <strong>Tenure</strong> (<a href="#cb-tenure">codebook ↑</a>), into the <strong>Test Variable(s)</strong> box.</li>
 <li>Type your target number, <strong>4.1</strong>, into the <strong>Test Value</strong> box.</li>
 <li>Click <strong>OK</strong> to run the test.</li>
 </ol>

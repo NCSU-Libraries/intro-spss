@@ -25,6 +25,13 @@ format:
         div.callout-note .callout-icon::before { filter: hue-rotate(10deg) saturate(1.4); }
         div.callout-note .callout-body-container ol { margin-bottom: 0.25rem; }
         p code, li code, td code { overflow-wrap: anywhere; }
+        /* The codebook table: compact, top-aligned, variable names bold. */
+        table.codebook { font-size: 0.875rem; }
+        table.codebook td, table.codebook th { vertical-align: top; }
+        table.codebook td:first-child { font-weight: 600; white-space: nowrap; }
+        table.codebook td:nth-child(3), table.codebook td:last-child { white-space: nowrap; }
+        @media (max-width: 700px) { table.codebook td { white-space: normal !important; } }
+        span[id^="cb-"]:target, tr:has(span[id^="cb-"]:target) td { background: #fef3c7; }
         </style>
 ---
 
@@ -49,8 +56,11 @@ catch up if you fall behind, and come back to it later.
 
 - **Steps are in blue boxes** titled with where you do them: *In your browser*, *In the VCL* or
   *In SPSS*. Everything outside a box explains what the steps do and how to read the results.
+- **The codebook is in @sec-codebook.** Links marked **↑** or **↓** jump to a variable's row in
+  it, and each row links on to the places we use that variable.
 - **Have your phone ready.** You'll confirm your NC State login with Duo more than once.
-- MBA 562: this guide is also in Moodle, and at [go.ncsu.edu/mba562-spss (new link needed)]{.tbd}.
+- MBA 562: this guide is also in Moodle, and at
+  [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
 :::
 
 # Welcome {.unnumbered}
@@ -65,8 +75,9 @@ catch up if you fall behind, and come back to it later.
 ## Agenda {.unnumbered}
 
 1. Access SPSS through the VCL (@sec-access).
-2. Download the dataset and its codebook within the VCL. Normally you would do this outside the
-   VCL, but we shortcut a step here for time's sake.
+2. Download the dataset and its codebook within the VCL, and read the codebook
+   (@sec-codebook). Normally you would download outside the VCL, but we shortcut a step here for
+   time's sake.
 3. Open SPSS and review its interface.
 4. Examine the dataset: variable types, measurement levels, missing values and value labels
    (@sec-variables).
@@ -133,19 +144,19 @@ We focus today on setting up and using the VCL for SPSS.
 We will be using a sample file from ABC Insurance's employee survey: one row per employee, with
 their demographics, job role, tenure, salary, performance evaluation and survey answers. The
 **codebook** (or data dictionary) tells you what each variable means and how its values are coded.
-Keep it open while you work.
+It's also in this guide, in @sec-codebook.
 
 ::: callout-note
 ## In the VCL: download the files
 
-1. Open a web browser and download the sample file and its codebook at
-   [go.ncsu.edu/mba562-sample (new link needed)]{.tbd}. If that link doesn't work, download
+1. In the VCL, open a web browser and go to this guide:
+   [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
+2. Click these links to download the data file and its codebook:
    [TeachingData.sav](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav)
-   and the [SPSS Codebook](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx)
-   from GitHub.
-2. Notice the data file is named **TeachingData.sav** and the codebook is named
+   and [SPSS Codebook.xlsx](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx).
+3. Notice the data file is named **TeachingData.sav** and the codebook is named
    **SPSS Codebook**.
-3. Open **File Explorer** and make sure you can find where the dataset and codebook were
+4. Open **File Explorer** and make sure you can find where the dataset and codebook were
    downloaded. Most likely they're in the Downloads folder of your VCL login:
    **This PC > C: > Users > [your Unity ID] > Downloads**.
 :::
@@ -181,8 +192,39 @@ often clears out files stored on it.
 the Downloads folder, with TeachingData.sav selected.
 :::
 
-In the next section we review an important practice: when you import data, always double-check
-that the data types are correct.
+Before you analyze anything, read the codebook (@sec-codebook). Then, in @sec-variables, we
+review an important practice: when you import data, always double-check that the data types are
+correct.
+
+------------------------------------------------------------------------
+
+# The codebook {#sec-codebook}
+
+A **codebook** (or data dictionary) describes every variable in a dataset: its name, its type,
+what it means, how its values are coded and how it is measured. It's how you know that a 2 in
+Gender means Male, or that 99 in Evaluation means "no evaluation". Check it before you trust
+anything SPSS shows you.
+
+This is the codebook for TeachingData.sav, the same as
+[SPSS Codebook.xlsx](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx).
+All nine variables are Numeric. The last column links down to where we use each variable, and
+**↑** links later in the guide bring you back to its row here.
+
+| Variable | Label | Values | Measure | Where we use it |
+|------------|------------------------------|--------------------------|---------|----------------|
+| [Ethnicity]{#cb-ethnicity} | Refers to the employee's ethnicity. In order to meet diversity objectives, ABC Insurance Co. is mandated to report five ethnic categories. | 0 = White<br>1 = Black<br>2 = Asian<br>3 = Latino<br>4 = Other | Nominal | Not used today |
+| [Gender]{#cb-gender} | Refers to the employee's gender. | 1 = Female<br>2 = Male | Nominal | [Reviewing variables](#sec-variables) ↓<br>[Crosstab](#sec-crosstabs) ↓<br>[Independent t test](#sec-ttest) ↓ |
+| [JobRole]{#cb-jobrole} | Refers to the employee's current position category within ABC Insurance company. This is a fluid variable that changes when the employee changes their job role. | 0 = administrative<br>1 = customer service<br>2 = coordinator<br>3 = junior account manager<br>4 = senior account manager<br>5 = assistant branch manager<br>6 = branch manager<br>7 = executive | Ordinal | [Crosstab](#sec-crosstabs) ↓<br>[One-way ANOVA](#sec-anova) ↓ |
+| [Age]{#cb-age} | Is simply the current age of the employee, recorded in years. | Missing values are coded as "." | Scale | [Missing values](#sec-missing) ↓ |
+| [Tenure]{#cb-tenure} | Refers to the number of years the employee has worked with ABC Insurance company. This is measured in years, rounded up. | | Scale | [Histogram](#sec-freq-scale) ↓<br>[Correlation](#sec-correlation) ↓<br>[Regression](#sec-regression) ↓<br>[Independent t test](#sec-ttest) ↓<br>[One-sample t test](#sec-onesample) ↓ |
+| [SalaryContinuous]{#cb-salarycontinuous} | Refers to employee's annual salary, capturing the employee's specific annual salary. | | Scale | [Correlation](#sec-correlation) ↓<br>[One-way ANOVA](#sec-anova) ↓<br>[Regression](#sec-regression) ↓<br>[Normality check](#sec-normality) ↓ |
+| [Evaluation]{#cb-evaluation} | A confidential score assigned to an employee based on their previous year's (or most recent) performance evaluation by their respective supervisor. | 1 = poor<br>2 = slightly underperformed<br>3 = met expectations<br>4 = slightly exceeded expectations<br>5 = excellent<br>Missing values are coded as "99" | Ordinal | [Reviewing variables](#sec-variables) ↓<br>[Missing values](#sec-missing) ↓<br>[Value labels](#sec-values) ↓<br>[Bar chart](#sec-freq-cat) ↓ |
+| [IntentiontoQuit]{#cb-intentiontoquit} | The likelihood/probability that an employee will search for another position (actively) over the next 12 months. | 1 = extremely unlikely<br>2 = somewhat likely<br>3 = not sure<br>4 = somewhat unlikely<br>5 = extremely likely | Ordinal | Not used today |
+| [JobSatisfaction]{#cb-jobsatisfaction} | Measuring how satisfied employees currently are working at ABC Insurance Co. | 1 = extremely unsatisfied<br>2 = somewhat unsatisfied<br>3 = neither satisfied nor dissatisfied<br>4 = somewhat satisfied<br>5 = extremely satisfied | Ordinal | Not used today |
+
+: The codebook for TeachingData.sav. {.codebook}
+
+> Compare the Measure column here with what SPSS shows in @sec-variables. Do they agree?
 
 ------------------------------------------------------------------------
 
@@ -190,7 +232,8 @@ that the data types are correct.
 
 The **Variable View** tab is not your data; it's metadata about your data. Review your data in
 this tab before doing any analysis, to make sure SPSS read your data in correctly and that you
-understand the variables you are working with.
+understand the variables you are working with. Compare what you see with the
+[codebook ↑](#sec-codebook).
 
 ::: callout-note
 ## In SPSS: open Variable View
@@ -218,7 +261,9 @@ What the columns mean:
 > some things you find problematic?
 
 You can edit any of these settings. For example, if a variable has been wrongly identified as
-Nominal, you can select the correct Measure from the dropdown.
+Nominal, you can select the correct Measure from the dropdown. The codebook says Gender is
+Nominal ([codebook ↑](#cb-gender)) and Evaluation is Ordinal ([codebook ↑](#cb-evaluation)), but SPSS has them the
+other way around.
 
 ::: callout-note
 ## In SPSS: fix the measurement levels
@@ -229,11 +274,11 @@ Nominal, you can select the correct Measure from the dropdown.
 
 ![The corrected Measure column.](images/variables-measure.png){fig-alt="Variable View with a red box around the Measure column. Ethnicity and Gender are Nominal; JobRole, Evaluation, IntentiontoQuit and JobSatisfaction are Ordinal; Age, Tenure and SalaryContinuous are Scale."}
 
-## Coding missing values
+## Coding missing values {#sec-missing}
 
 In **Data View**, a "." in a cell means the value is already coded as *system-missing*, and you
-don't have to do anything. But some datasets use a number as a missing-value code instead. In
-the SPSS Codebook, Evaluation's values are defined from 1 to 5, yet some rows have **99**. Those
+don't have to do anything; Age has some ([codebook ↑](#cb-age)). But some datasets use a number as a missing-value code instead. In
+the codebook, Evaluation's values are defined from 1 to 5 ([codebook ↑](#cb-evaluation)), yet some rows have **99**. Those
 99s are missing values. Unless you tell SPSS so, it treats 99 as a real score and includes it in
 your analysis.
 
@@ -296,7 +341,7 @@ the Missing cell and check what you typed.
 
 > When thinking about your own data's variables, how will missing values be coded?
 
-## Coding values for categorical variables
+## Coding values for categorical variables {#sec-values}
 
 If you import a survey without defined Values for its categorical variables, you may need to
 enter the value labels yourself. Evaluation has no labels yet: its Values cell says None.
@@ -304,7 +349,7 @@ enter the value labels yourself. Evaluation has no labels yet: its Values cell s
 ::: callout-note
 ## In SPSS: label Evaluation's values
 
-1. Open the data dictionary (the SPSS Codebook) to find the values and labels for each variable.
+1. Look up Evaluation's values and labels in the codebook ([codebook ↑](#cb-evaluation)).
 2. In **Variable View**, click the **Values** cell for **Evaluation**, then the **…** button to
    the right of the cell.
 3. To code a new value, click the **+** button. Evaluation has 5 values, 1 through 5, so click
@@ -324,13 +369,13 @@ Now Variable View is informative and ready for further analysis.
 
 # Descriptive statistics {#sec-descriptive}
 
-## Frequency of a categorical variable
+## Frequency of a categorical variable {#sec-freq-cat}
 
 ::: callout-note
 ## In SPSS: a frequency table and bar chart
 
 1. Click **Analyze > Descriptive Statistics > Frequencies**.
-2. Select one or more nominal or ordinal variables, such as **Evaluation**.
+2. Select one or more nominal or ordinal variables, such as **Evaluation** ([codebook ↑](#cb-evaluation)).
 3. Click **Statistics**, select the options you want to see, and click **Continue**.
    - For a nominal variable like Gender, select **Mode** only.
    - For an ordinal variable like Evaluation, you can select **Mode**, plus **Quartiles** and
@@ -367,14 +412,14 @@ Valid Percent divides by the 879 who have one.
 
 ![Valid Percent leaves out the missing values.](images/freq-valid-percent.png){fig-alt="Frequencies output for Evaluation with labels. The Statistics table shows N Valid 879, Missing 57, Mode 3, Range 4, and percentiles 2, 3 and 4. A red box outlines the Valid Percent column of the frequency table: 8.5, 21.3, 30.6, 27.2, 12.4 and a total of 100.0."}
 
-## Frequency of a scale variable
+## Frequency of a scale variable {#sec-freq-scale}
 
 ::: callout-note
 ## In SPSS: summary statistics and a histogram
 
 1. Click **Analyze > Descriptive Statistics > Frequencies**. Click **Reset** if Evaluation is
    still selected.
-2. Select one or more scale variables, such as **Tenure**.
+2. Select one or more scale variables, such as **Tenure** ([codebook ↑](#cb-tenure)).
 3. Click **Statistics** and select the options you want under Percentile Values, Central
    Tendency, Distribution and Dispersion. Here we choose **Mean**, **Median** and **Mode** under
    Central Tendency, and **Std. deviation** and **Range** under Dispersion.
@@ -394,7 +439,7 @@ You get a table of statistics and a histogram with a normal curve.
 
 ![Tenure: statistics and histogram.](images/freq-histogram.png){fig-alt="Output for Tenure. A Statistics table shows N 936, Mean 5.38, Median 5.00, Mode 1, Std. Deviation 4.056 and Range 30. Below, a histogram titled Histogram of Tenure has tall bars at 1 and 2 years that fall off to the right, with a long tail out to about 30 years. A normal curve centered near 5 is drawn over the bars."}
 
-## Two categorical variables together
+## Two categorical variables together {#sec-crosstabs}
 
 **Cross-tabulations**, also known as crosstabs, show how often responses to two categorical
 variables (nominal or ordinal) occur together. Each crosstab has a row variable and a column
@@ -406,8 +451,8 @@ test**.
 ## In SPSS: a crosstab with a chi-square test
 
 1. Click **Analyze > Descriptive Statistics > Crosstabs**.
-2. Move one categorical variable into **Row(s)** (**JobRole**) and one into **Column(s)**
-   (**Gender**).
+2. Move one categorical variable into **Row(s)** (**JobRole** ([codebook ↑](#cb-jobrole))) and one into
+   **Column(s)** (**Gender** ([codebook ↑](#cb-gender))).
 3. Click **Statistics**, select **Chi-square**, then click **Continue** and **OK**.
 :::
 
@@ -432,7 +477,7 @@ taper off equally on both sides. Normality testing applies to continuous variabl
 section we assume the data are normal; [Checking normality](#sec-normality) in the Appendix shows
 how to test it with Explore.
 
-## Correlation tables
+## Correlation tables {#sec-correlation}
 
 A correlation table shows the strength and direction of the relationships between pairs of
 variables. The Pearson correlation requires two or more continuous variables.
@@ -449,7 +494,8 @@ The correlation coefficient (*r*) can be positive or negative, and ranges from �
 ## In SPSS: a Pearson correlation
 
 1. Click **Analyze > Correlate > Bivariate**.
-2. Move **Tenure** and **SalaryContinuous** into the **Variables** box.
+2. Move **Tenure** ([codebook ↑](#cb-tenure)) and **SalaryContinuous** ([codebook ↑](#cb-salarycontinuous)) into the
+   **Variables** box.
 3. Check **Pearson** under Correlation Coefficients.
 4. Check **Flag significant correlations** to mark important results.
 5. Click **OK** to run the test.
@@ -476,7 +522,7 @@ All of these are under **Analyze > Compare Means and Proportions**. Here we use 
 illustrate the family. The [Appendix](#sec-appendix) shows the
 [independent-samples t test](#sec-ttest) and the [one-sample t test](#sec-onesample).
 
-### One-way ANOVA
+### One-way ANOVA {#sec-anova}
 
 ANOVA stands for ANalysis Of VAriance. A one-way ANOVA compares the means of two or more
 independent groups to determine whether there is statistical evidence that the associated
@@ -493,8 +539,9 @@ $$H_1: \text{at least one } \mu_i \text{ is different} \quad \text{(at least one
 
 where $\mu_i$ is the population mean of the $i^{th}$ group, $i = 1, \dots, k$.
 
-In the sample dataset, **SalaryContinuous** is an employee's annual salary, and **JobRole** is
-the employee's current position within ABC Insurance. Let's use ANOVA to test whether salary
+In the sample dataset, **SalaryContinuous** is an employee's annual salary
+([codebook ↑](#cb-salarycontinuous)), and **JobRole** is the employee's current position within ABC Insurance
+([codebook ↑](#cb-jobrole)). Let's use ANOVA to test whether salary
 differs significantly by job role. SalaryContinuous is the dependent variable and JobRole is the
 independent variable.
 
@@ -517,7 +564,7 @@ We conclude that mean salary differs significantly across at least one of the jo
 find out, follow up with multiple comparison (post hoc) tests, from the **Post Hoc** button in the
 One-Way ANOVA dialog.
 
-## Simple linear regression
+## Simple linear regression {#sec-regression}
 
 Linear regression models the relationship between one independent ("explanatory") variable and a
 dependent ("response") variable by analyzing many observations. The model can then be used to
@@ -537,7 +584,8 @@ where:
 In simple terms, if you plot a number of data points on a graph to see whether they form a
 straight line, the SLR is the line of best fit for those points.
 
-For example, we want to model and test whether Tenure predicts Salary. The dependent variable is
+For example, we want to model and test whether Tenure ([codebook ↑](#cb-tenure)) predicts Salary
+([codebook ↑](#cb-salarycontinuous)). The dependent variable is
 SalaryContinuous and the independent variable is Tenure, so our model is:
 
 $$\text{SalaryContinuous} = \beta_0 + \beta_1 \, \text{Tenure} + \epsilon$$
@@ -653,7 +701,8 @@ applies to continuous variables only.
 ## In SPSS: test for normality with Explore
 
 1. Click **Analyze > Descriptive Statistics > Explore**.
-2. Move a scale variable, such as **SalaryContinuous**, to the **Dependent List**. Click the
+2. Move a scale variable, such as **SalaryContinuous** ([codebook ↑](#cb-salarycontinuous)), to the
+   **Dependent List**. Click the
    **Plots** button.
 3. In the Plots dialog, check **Normality plots with tests**. This adds the Shapiro-Wilk and
    Kolmogorov-Smirnov tests and Q-Q plots.
@@ -697,12 +746,12 @@ where $\mu_{Male}$ and $\mu_{Female}$ are the population means for men and women
 ## In SPSS: an independent-samples t test
 
 1. Click **Analyze > Compare Means and Proportions > Independent-Samples T Test**.
-2. Move a quantitative variable into **Test Variable(s)**, such as **Tenure**. This is the
+2. Move a quantitative variable into **Test Variable(s)**, such as **Tenure** ([codebook ↑](#cb-tenure)). This is the
    dependent variable.
 3. Move a categorical variable into **Grouping Variable**, such as **Gender**. This is the
    independent variable.
 4. Click **Define Groups** and fill in the codes for the two categories you want to compare.
-   Female is 1 and male is 2, so put **1** in Group 1 and **2** in Group 2. Click **Continue**.
+   Female is 1 and male is 2 ([codebook ↑](#cb-gender)), so put **1** in Group 1 and **2** in Group 2. Click **Continue**.
 5. Check **Homogeneity of variance test**, so the output includes Levene's test.
 6. Click **Options** and check that the Confidence Interval Percentage is **95**. That means your
    alpha (what you compare your p-value to for statistical significance) is 0.05 (5%). Click
@@ -776,7 +825,8 @@ where $\mu_{Tenure}$ is the mean tenure.
 ## In SPSS: a one-sample t test
 
 1. Click **Analyze > Compare Means and Proportions > One-Sample T Test**.
-2. Move your continuous test variable, such as **Tenure**, into the **Test Variable(s)** box.
+2. Move your continuous test variable, such as **Tenure** ([codebook ↑](#cb-tenure)), into the
+   **Test Variable(s)** box.
 3. Type your target number, **4.1**, into the **Test Value** box.
 4. Click **OK** to run the test.
 :::
