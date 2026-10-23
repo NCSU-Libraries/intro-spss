@@ -627,11 +627,12 @@ you leave, so you can get to it from outside the VCL.
 ## Save your files and leave the VCL
 
 ::: callout-note
-## In the VCL: save to the cloud and log off
+## In the VCL: save to the cloud and leave
 
-1. [In the VCL's web browser, go to [drive.google.com](https://drive.google.com), sign in with
-   your NC State account, and upload your output files and any data you changed.]{.tbd}
-2. [Double-click **Log Off** on the VCL desktop to end your session.]{.tbd}
+1. In the VCL's web browser, go to [drive.google.com](https://drive.google.com), sign in with
+   your NC State account, and upload your output files and any data you changed.
+2. To leave the VCL, close the browser window (or tab) on your own computer that the VCL is
+   running in.
 :::
 
 ------------------------------------------------------------------------
