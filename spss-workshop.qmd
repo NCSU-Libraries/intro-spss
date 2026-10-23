@@ -103,11 +103,6 @@ We focus today on setting up and using the VCL for SPSS.
 
 ## SPSS access via the VCL
 
-::: placeholder
-**Screenshot to take: `images/vcl-new-reservation.png`.** The VCL New Reservation dialog with
-"SPSS/AMOS (AVD)" selected in the dropdown and the Connect button visible.
-:::
-
 ::: callout-note
 ## In your browser: reserve SPSS in the VCL
 
@@ -122,6 +117,8 @@ We focus today on setting up and using the VCL for SPSS.
    authenticate again if asked.
 8. Click **Yes** to stay signed in.
 :::
+
+![The New Reservation dialog, with SPSS/AMOS (AVD) chosen from the list of environments.](images/vcl-new-reservation.png){fig-alt="The VCL New Reservation dialog. Under Please select the environment you want to use from the list, a dropdown list is open, showing environments such as R (AVD), RStudio (AVD), SAS 9.4 (AVD) and Tecplot 360 (AVD). SPSS/AMOS (AVD) is highlighted." width="80%"}
 
 ![The AVD portal lists the VCL devices. Choose the one named NCSU.](images/vcl-devices.png){fig-alt="A dark web page titled Devices, with a VCL group of three tiles: EOS-Lab, ISE-Lab and NCSU. A red box outlines the NCSU tile."}
 
@@ -159,11 +156,6 @@ are coded, is in this guide, in @sec-codebook. You only need to download the dat
    **This PC > C: > Users > [your Unity ID] > Downloads**.
 :::
 
-::: placeholder
-**Screenshot to take: `images/data-file-explorer.png`.** File Explorer in the VCL, open at
-This PC > C: > Users > [Unity ID] > Downloads, showing TeachingData.sav.
-:::
-
 ::: {.callout-warning}
 ## Gotcha: the VCL doesn't keep your files
 
@@ -183,11 +175,6 @@ often clears out files stored on it.
    (**This PC > C: > Users > [your Unity ID] > Downloads**).
 3. Select **TeachingData.sav**. The **File name** box fills in with TeachingData.sav.
 4. Click **Open**. The file loads in the SPSS Data Editor.
-:::
-
-::: placeholder
-**Screenshot to take: `images/data-open-dialog.png`.** SPSS's Open Data dialog, Look in set to
-the Downloads folder, with TeachingData.sav selected.
 :::
 
 Before you analyze anything, read the codebook (@sec-codebook). Then, in @sec-variables, we
@@ -278,11 +265,6 @@ don't have to do anything; Age has some ([codebook ↑](#cb-age)). But some data
 the codebook, Evaluation's values are defined from 1 to 5 ([codebook ↑](#cb-evaluation)), yet some rows have **99**. Those
 99s are missing values. Unless you tell SPSS so, it treats 99 as a real score and includes it in
 your analysis.
-
-::: placeholder
-**Screenshot to take: `images/missing-99-data-view.png`.** Data View scrolled so the
-Evaluation column shows a few 99 values among the 1–5 scores (and, if possible, a "." in Age).
-:::
 
 ::: callout-note
 ## In SPSS: code 99 as missing
@@ -763,13 +745,7 @@ where $\mu_{Male}$ and $\mu_{Female}$ are the population means for men and women
 
 ![The Independent-Samples T Test dialog and its Options.](images/ttest-define-groups.png){fig-alt="The Independent-Samples T Test dialog with Tenure as the Test Variable and Gender(1 2) as the Grouping Variable. Homogeneity of variance test is unchecked and Estimate effect sizes is checked. The Options dialog beside it shows a 95 percent Confidence Interval Percentage."}
 
-::: placeholder
-**Screenshot to take: `images/ttest-output-levene.png`.** The Independent Samples Test table
-after running the test with **Homogeneity of variance test** checked, so the Levene's Test for
-Equality of Variances columns (F and Sig.) show. It replaces the screenshot below.
-:::
-
-![The Group Statistics and Independent Samples Test tables (run without Levene's test).](images/ttest-output.png){fig-alt="T-Test output. Group Statistics: 535 female employees with mean tenure 5.20, and 401 male with mean 5.61. The Independent Samples Test table has two rows. Equal variances assumed: t -1.521, df 934, one-sided p .064, two-sided p .129, mean difference -.407. Equal variances not assumed: t -1.501, df 817.334, two-sided p .134."}
+![The Group Statistics and Independent Samples Test tables. This run left Homogeneity of variance test unchecked; with it checked, your table also has Levene's F and Sig. columns.](images/ttest-output.png){fig-alt="T-Test output. Group Statistics: 535 female employees with mean tenure 5.20, and 401 male with mean 5.61. The Independent Samples Test table has two rows. Equal variances assumed: t -1.521, df 934, one-sided p .064, two-sided p .129, mean difference -.407. Equal variances not assumed: t -1.501, df 817.334, two-sided p .134."}
 
 ### Reading the output {.unnumbered}
 
