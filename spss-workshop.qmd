@@ -139,7 +139,10 @@ Keep it open while you work.
 ## In the VCL: download the files
 
 1. Open a web browser and download the sample file and its codebook at
-   [go.ncsu.edu/mba562-sample (new link needed)]{.tbd}.
+   [go.ncsu.edu/mba562-sample (new link needed)]{.tbd}. If that link doesn't work, download
+   [TeachingData.sav](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav)
+   and the [SPSS Codebook](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx)
+   from GitHub.
 2. Notice the data file is named **TeachingData.sav** and the codebook is named
    **SPSS Codebook**.
 3. Open **File Explorer** and make sure you can find where the dataset and codebook were
