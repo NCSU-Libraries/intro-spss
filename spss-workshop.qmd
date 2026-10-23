@@ -479,7 +479,7 @@ a normal distribution before you run an inferential test that assumes one. A nor
 forms a symmetrical, bell-shaped curve where most values cluster around a central average and
 taper off equally on both sides. Normality testing applies to continuous variables only. In this
 section we assume the data are normal; [Checking normality](#sec-normality) in the Appendix shows
-how to test it with Explore.
+how to test it with Explore, and what its result means for the ANOVA and the regression here.
 
 ## Correlation tables {#sec-correlation}
 
@@ -755,6 +755,21 @@ below 0.05, the data significantly deviate from a normal distribution.
 **Interpretation:** No. Salary is not normally distributed: the Shapiro-Wilk test is significant
 (W = .897, df = 936, p < .001), and in the Q-Q plot the points bend away from the line at both
 ends.
+
+::: {.callout-warning}
+## Gotcha: the ANOVA and the regression use salary anyway
+
+Salary is the dependent variable in the [one-way ANOVA](#sec-anova) and the
+[regression](#sec-regression), and it isn't normal. Strictly, those tests assume the *residuals*
+(each employee's distance from their group mean, or from the regression line) are roughly normal,
+not the variable as a whole. A skewed variable usually means skewed residuals, though.
+
+With 936 employees this matters less: with large samples, ANOVA and regression results hold up
+well when the data aren't normal. With a small sample, or very skewed data, consider an
+alternative, such as the Kruskal-Wallis test in place of a one-way ANOVA (under
+**Analyze > Nonparametric Tests**), or transforming the variable (for example, taking its log)
+before a regression.
+:::
 
 ## Independent-samples t test {#sec-ttest .unnumbered}
 

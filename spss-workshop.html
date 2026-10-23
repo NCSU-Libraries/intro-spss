@@ -3056,7 +3056,7 @@ Conventions:
 </section>
 <section id="sec-inferential" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Inferential statistics</h1>
-<p>You can run any test in SPSS and receive output, but a variable <strong>should</strong> first be checked for a normal distribution before you run an inferential test that assumes one. A normal distribution forms a symmetrical, bell-shaped curve where most values cluster around a central average and taper off equally on both sides. Normality testing applies to continuous variables only. In this section we assume the data are normal; <a href="#sec-normality">Checking normality</a> in the Appendix shows how to test it with Explore.</p>
+<p>You can run any test in SPSS and receive output, but a variable <strong>should</strong> first be checked for a normal distribution before you run an inferential test that assumes one. A normal distribution forms a symmetrical, bell-shaped curve where most values cluster around a central average and taper off equally on both sides. Normality testing applies to continuous variables only. In this section we assume the data are normal; <a href="#sec-normality">Checking normality</a> in the Appendix shows how to test it with Explore, and what its result means for the ANOVA and the regression here.</p>
 <section id="sec-correlation" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-correlation"><span class="header-section-number">5.1</span> Correlation tables</h2>
 <p><strong>Question: Do employees who have been at the company longer earn more?</strong></p>
@@ -3362,6 +3362,20 @@ Conventions:
 </figure>
 </div>
 <p><strong>Interpretation:</strong> No. Salary is not normally distributed: the Shapiro-Wilk test is significant (W = .897, df = 936, p &lt; .001), and in the Q-Q plot the points bend away from the line at both ends.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Gotcha: the ANOVA and the regression use salary anyway
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Salary is the dependent variable in the <a href="#sec-anova">one-way ANOVA</a> and the <a href="#sec-regression">regression</a>, and it isn’t normal. Strictly, those tests assume the <em>residuals</em> (each employee’s distance from their group mean, or from the regression line) are roughly normal, not the variable as a whole. A skewed variable usually means skewed residuals, though.</p>
+<p>With 936 employees this matters less: with large samples, ANOVA and regression results hold up well when the data aren’t normal. With a small sample, or very skewed data, consider an alternative, such as the Kruskal-Wallis test in place of a one-way ANOVA (under <strong>Analyze &gt; Nonparametric Tests</strong>), or transforming the variable (for example, taking its log) before a regression.</p>
+</div>
+</div>
 </section>
 <section id="sec-ttest" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-ttest">Independent-samples t test</h2>
