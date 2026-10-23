@@ -355,6 +355,8 @@ Now Variable View is informative and ready for further analysis.
 
 ## Frequency of a categorical variable {#sec-freq-cat}
 
+**Question: How are employees' performance evaluations spread across the five ratings?**
+
 ::: callout-note
 ## In SPSS: a frequency table and bar chart
 
@@ -396,7 +398,14 @@ Valid Percent divides by the 879 who have one.
 
 ![Valid Percent leaves out the missing values.](images/freq-valid-percent.png){fig-alt="Frequencies output for Evaluation with labels. The Statistics table shows N Valid 879, Missing 57, Mode 3, Range 4, and percentiles 2, 3 and 4. A red box outlines the Valid Percent column of the frequency table: 8.5, 21.3, 30.6, 27.2, 12.4 and a total of 100.0."}
 
+**Interpretation:** Of the 879 employees with an evaluation, the most common rating is 3, *met
+expectations* (30.6%). 12.4% were rated *excellent* and 8.5% *poor*, and half of the ratings fall
+between 2 and 4 (the 25th and 75th percentiles). We use Valid Percent because 57 employees have no
+evaluation.
+
 ## Frequency of a scale variable {#sec-freq-scale}
+
+**Question: How long have employees typically worked at ABC Insurance?**
 
 ::: callout-note
 ## In SPSS: summary statistics and a histogram
@@ -423,7 +432,14 @@ You get a table of statistics and a histogram with a normal curve.
 
 ![Tenure: statistics and histogram.](images/freq-histogram.png){fig-alt="Output for Tenure. A Statistics table shows N 936, Mean 5.38, Median 5.00, Mode 1, Std. Deviation 4.056 and Range 30. Below, a histogram titled Histogram of Tenure has tall bars at 1 and 2 years that fall off to the right, with a long tail out to about 30 years. A normal curve centered near 5 is drawn over the bars."}
 
+**Interpretation:** Employees have worked at ABC Insurance for 5.38 years on average (SD 4.06),
+with a median of 5 years, and the most common tenure is 1 year. The histogram is right-skewed:
+most employees have under 10 years, and a few have more than 20. That's why the mean sits above
+the median and the normal curve fits the bars poorly.
+
 ## Two categorical variables together {#sec-crosstabs}
+
+**Question: Is job role associated with gender?**
 
 **Cross-tabulations**, also known as crosstabs, show how often responses to two categorical
 variables (nominal or ordinal) occur together. Each crosstab has a row variable and a column
@@ -446,9 +462,13 @@ The output is a crosstab and a chi-square test of independence between the two v
 
 ![The crosstab and the Chi-Square Tests table.](images/crosstabs-output.png){fig-alt="Crosstabs output. A table counts employees by job role and gender, from administrative (20 female, 4 male) to executive (4 female, 15 male), 535 female and 401 male in all. The Chi-Square Tests table shows Pearson Chi-Square 55.355 with 7 df and asymptotic significance below .001." width="75%"}
 
-Look at the first row of the Chi-Square Tests table, Pearson Chi-Square. Its Asymptotic
-Significance is below 0.05 (χ²(7) = 55.355, p < .001), so there is evidence that job role and
-gender are associated.
+Look at the first row of the Chi-Square Tests table, Pearson Chi-Square. If its Asymptotic
+Significance is below 0.05, there is evidence that the two variables are associated.
+
+**Interpretation:** Yes, job role and gender are associated (χ²(7) = 55.355, p < .001). The test
+says the two are related; the crosstab shows how. Women are most of the administrative (20 of 24)
+and customer service (208 of 312) staff, and men are most of the branch managers (28 of 45) and
+executives (15 of 19).
 
 ------------------------------------------------------------------------
 
@@ -462,6 +482,8 @@ section we assume the data are normal; [Checking normality](#sec-normality) in t
 how to test it with Explore.
 
 ## Correlation tables {#sec-correlation}
+
+**Question: Do employees who have been at the company longer earn more?**
 
 A correlation table shows the strength and direction of the relationships between pairs of
 variables. The Pearson correlation requires two or more continuous variables.
@@ -489,9 +511,12 @@ The correlation coefficient (*r*) can be positive or negative, and ranges from �
 
 ![The correlation table.](images/correlation-output.png){fig-alt="Correlations output. A two-by-two table pairs Tenure and SalaryContinuous; the Pearson correlation between them is .527, flagged with three asterisks, with Sig. (2-tailed) below .001 and N 936. A footnote says the correlation is significant at the 0.001 level."}
 
-The correlation coefficient is .527, which suggests that Tenure and SalaryContinuous are
-positively correlated. The three asterisks (\*\*\*) next to the coefficient mean it is
-significant at the p < 0.001 level, as the footnote under the table says.
+Asterisks next to a coefficient flag it as significant, and the footnote under the table says at
+what level: here, three asterisks (\*\*\*) mean p < 0.001.
+
+**Interpretation:** Yes. Tenure and salary have a moderate positive correlation (r = .527,
+p < .001, N = 936): employees with longer tenure tend to earn more. A correlation doesn't show that
+tenure *causes* higher pay.
 
 ## Comparing means
 
@@ -507,6 +532,8 @@ illustrate the family. The [Appendix](#sec-appendix) shows the
 [independent-samples t test](#sec-ttest) and the [one-sample t test](#sec-onesample).
 
 ### One-way ANOVA {#sec-anova}
+
+**Question: Does average salary differ across job roles?**
 
 ANOVA stands for ANalysis Of VAriance. A one-way ANOVA compares the means of two or more
 independent groups to determine whether there is statistical evidence that the associated
@@ -547,12 +574,16 @@ independent variable.
 
 ![The ANOVA table and effect sizes.](images/anova-output.png){fig-alt="Oneway output. The ANOVA table shows Between Groups with 7 df and Within Groups with 928 df, F 636.917 and Sig. below .001. An ANOVA Effect Sizes table shows Eta-squared .828." width="70%"}
 
-We conclude that mean salary differs significantly across at least one of the job roles
-($F_{7,928} = 636.917,\ p < 0.001$). The ANOVA alone doesn't tell us *which* means differ. To
-find out, follow up with multiple comparison (post hoc) tests, from the **Post Hoc** button in the
-One-Way ANOVA dialog.
+**Interpretation:** Yes. Mean salary differs significantly across job roles
+($F_{7,928} = 636.917,\ p < 0.001$): at least one job role's mean salary is different from the
+others. The effect is large: eta-squared is .828, so job role accounts for about 83% of the
+variation in salary. The ANOVA alone doesn't tell us *which* job roles differ. To find out, follow
+up with multiple comparison (post hoc) tests, from the **Post Hoc** button in the One-Way ANOVA
+dialog.
 
 ## Simple linear regression {#sec-regression}
+
+**Question: Does tenure predict salary, and by how much?**
 
 Linear regression models the relationship between one independent ("explanatory") variable and a
 dependent ("response") variable by analyzing many observations. The model can then be used to
@@ -591,15 +622,20 @@ $$\text{SalaryContinuous} = \beta_0 + \beta_1 \, \text{Tenure} + \epsilon$$
 
 ![The Model Summary, ANOVA and Coefficients tables.](images/regression-output.png){fig-alt="Regression output. The Model Summary shows R .527, R Square .278 and Adjusted R Square .277. The ANOVA table shows F 359.830 with Sig. below .001. The Coefficients table shows a constant of 35113.230 and a Tenure coefficient of 3269.726, with t 18.969 and Sig. below .001." width="70%"}
 
-From the output:
+Where to look in the output:
 
-- The **Adjusted R Square** is 0.277, which means that 27.7% of the variation in salary is
-  explained by tenure.
-- The **coefficient of Tenure** is 3269.726, which means that for each additional year of tenure
-  at ABC Insurance, an employee's predicted salary increases by \$3,269.73, on average.
+- **Adjusted R Square** (Model Summary): the share of the variation in the dependent variable that
+  the model explains.
+- **B** (Coefficients, Unstandardized): the intercept, in the *(Constant)* row, and the slope, in
+  the Tenure row.
+- **Sig.** in the Tenure row: whether tenure is a significant predictor.
 
-Our conclusion: the p-value for Tenure is < 0.001, so tenure is a statistically significant
-predictor of salary.
+**Interpretation:** Yes. Tenure is a statistically significant predictor of salary (t = 18.969,
+p < .001). The fitted model is predicted salary = \$35,113.23 + \$3,269.73 × tenure: each
+additional year of tenure at ABC Insurance adds about \$3,270 to an employee's predicted salary,
+on average. Tenure explains 27.7% of the variation in salary (adjusted R² = .277), so most of the
+variation comes from other things, such as job role. R (.527) is the same as the correlation
+in @sec-correlation.
 
 ------------------------------------------------------------------------
 
@@ -687,6 +723,8 @@ from <https://libguides.library.kent.edu/SPSS>
 
 ## Checking normality {#sec-normality .unnumbered}
 
+**Question: Is salary normally distributed?**
+
 You *can* run any test in SPSS and receive output, but a variable should first be checked for a
 normal distribution before you run an inferential test that assumes one. Normality testing
 applies to continuous variables only.
@@ -712,15 +750,17 @@ Check the **Sig.** value in the Shapiro-Wilk columns of the Tests of Normality t
 greater than 0.05, there's no evidence that the data depart from a normal distribution. If it is
 below 0.05, the data significantly deviate from a normal distribution.
 
-In our example, SalaryContinuous isn't normally distributed: the Sig. value is < .001, and the
-Q-Q plot shows a heavy tail.
-
 ![The normal Q-Q plot for SalaryContinuous. If the data were normal, the points would follow the line.](images/normality-qq-plot.png){fig-alt="A Normal Q-Q Plot of SalaryContinuous, Expected Normal against Observed Value. The points follow the straight line in the middle, but bend away sharply below it at the low end, near 20,000, and flatten below it at the high end, from about 100,000 to 150,000."}
+
+**Interpretation:** No. Salary is not normally distributed: the Shapiro-Wilk test is significant
+(W = .897, df = 936, p < .001), and in the Q-Q plot the points bend away from the line at both
+ends.
 
 ## Independent-samples t test {#sec-ttest .unnumbered}
 
-One question we might ask is whether average tenure is different for male and female employees.
-That means testing whether the sample means of tenure for men and women are statistically
+**Question: Is average tenure different for female and male employees?**
+
+To answer it, we test whether the sample means of tenure for men and women are statistically
 different, which an independent-samples t test does.
 
 An independent-samples t test tells you whether there is a difference between the means of two
@@ -771,16 +811,14 @@ assumed, so use the second row, *Equal variances not assumed*.
 **Is the difference significant?** In the row you chose, read the **Two-Sided p**. If it is
 smaller than 0.05, reject the null hypothesis. If it is greater than 0.05, fail to reject the null
 hypothesis: the difference between the two groups on this dependent variable is not
-statistically significant. Here the two-sided p is .129 (or .134 in the second row), so there's
-no significant difference in mean tenure between female and male employees.
+statistically significant.
 
 ![SPSS's note on the highlighted cells.](images/ttest-levene-row.png){fig-alt="A note from SPSS titled Independent Samples Test: Two-Sided p. Under Equal variances assumed, a pale green swatch says the average difference is not significant for the tenure variable, and a bright green swatch says the average difference is significant for no variables."}
 
 **What is the Independent Samples Effect Sizes table?** It shows the effect size, which is also
 useful, for example, when estimating an appropriate sample size for a study. Find it in the
 **Point Estimate** column of the **Cohen's d** row. As a rule of thumb, a d of about 0.2 is a
-small effect, about 0.5 a medium effect, and 0.8 or more a large effect. Here d is −0.100, a
-negligible effect.
+small effect, about 0.5 a medium effect, and 0.8 or more a large effect.
 
 ![The Independent Samples Effect Sizes table.](images/ttest-effect-size.png){fig-alt="Independent Samples Effect Sizes table for tenure. Cohen's d: standardizer 4.053, point estimate -.100, 95 percent confidence interval -.230 to .029. Hedges' correction and Glass's delta give similar values." width="75%"}
 
@@ -795,7 +833,14 @@ negligible effect.
   assumed* row uses an adjusted df.
 - Two-sided *p* (the p-value for that t and df)
 
+**Interpretation:** No. Women average 5.20 years of tenure (SD 3.89, n = 535) and men 5.61 years
+(SD 4.26, n = 401), but the difference isn't statistically significant (t(934) = −1.521,
+two-sided p = .129), and the effect is negligible (Cohen's d = −0.10). The conclusion is the same
+whichever row Levene's test points to: the second row's two-sided p is .134.
+
 ## One-sample t test {#sec-onesample .unnumbered}
+
+**Question: Is average tenure at ABC Insurance different from the U.S. figure of 4.1 years?**
 
 A one-sample t test tells you whether a sample mean is statistically different from a population
 value. The test variable must be continuous (interval or ratio level).
@@ -831,13 +876,7 @@ where $\mu_{Tenure}$ is the mean tenure.
 
 ![The One-Sample Statistics and One-Sample Test tables.](images/onesample-output.png){fig-alt="One-Sample Statistics for tenure: N 936, mean 5.38, standard deviation 4.056. One-Sample Test with Test Value 4.1: t 9.641, df 935, one- and two-sided p below .001, mean difference 1.278, 95 percent confidence interval 1.02 to 1.54." width="80%"}
 
-Since p < 0.001, we reject the null hypothesis that the mean tenure of employees at this company
-equals the hypothesized population value of 4.1 years, and conclude that mean tenure is
-significantly different from 4.1 years.
-
-Based on the results, we can state:
-
-> There is a significant difference between the mean tenure of employees at this company and the
-> overall employee population in the U.S. (p < .001). The average tenure of employees at this
-> company is about 1.278 years more than the U.S. employee population average (95% CI [1.02,
-> 1.54]).
+**Interpretation:** Yes. Mean tenure at ABC Insurance is 5.38 years, which is significantly
+different from 4.1 years (t(935) = 9.641, p < .001), so we reject the null hypothesis. Employees
+here have been with the company about 1.28 years longer than the U.S. figure (95% CI [1.02,
+1.54]).
