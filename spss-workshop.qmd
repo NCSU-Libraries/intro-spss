@@ -686,9 +686,9 @@ you leave, so you can get to it from outside the VCL.
 
 ## References {#sec-references .unnumbered}
 
-**The data.** SAGE Publications. ([year]{.tbd}). *[Dataset title, from SAGE's Cite
-tool]{.tbd}* [Data set]. SAGE Research Methods Datasets.
-<https://methods.sagepub.com/dataset/descriptive-stats-hr-data-spss>. NC State students and staff:
+**The data.** Arseneault, R. (2023). *Learn to use descriptive statistics in SPSS to interrogate
+large employee HR data sets with simulated company data*. In *Sage Research Methods: Business*.
+SAGE Publications Ltd. <https://doi.org/10.4135/9781529629477>. NC State students and staff:
 [open it through NC State Libraries](https://methods-sagepub-com.prox.lib.ncsu.edu/dataset/descriptive-stats-hr-data-spss).
 
 Kent State University Libraries. (2017, May 15). *SPSS Tutorials*. Retrieved September 24, 2026,

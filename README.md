@@ -11,10 +11,21 @@ The guide is online at https://ncsu-libraries.github.io/intro-spss/.
   browser are in blue boxes; everything else is explanation. `spss-workshop.html` is the rendered,
   self-contained page.
 - `data/TeachingData.sav`: the sample data, ABC Insurance's employee survey (936 employees,
-  9 variables), a teaching dataset from
-  [SAGE Research Methods Datasets](https://methods.sagepub.com/dataset/descriptive-stats-hr-data-spss).
+  9 variables): simulated company data from SAGE Research Methods, modified for this session
+  (see Data source below).
 - `data/SPSS Codebook.xlsx`: the codebook: each variable's name, type, label, values and measure.
 
 Render the guide with `quarto render spss-workshop.qmd`.
 
 All pictures in `images/` are our own screenshots of SPSS and the VCL.
+
+## Data source
+
+The sample data is adapted from:
+
+Arseneault, R. (2023). *Learn to use descriptive statistics in SPSS to interrogate large employee
+HR data sets with simulated company data*. In *Sage Research Methods: Business*. SAGE Publications
+Ltd. https://doi.org/10.4135/9781529629477
+
+We modified the original dataset for this session, so `data/TeachingData.sav` isn't identical to
+the version on SAGE.
