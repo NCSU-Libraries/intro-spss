@@ -75,9 +75,8 @@ catch up if you fall behind, and come back to it later.
 ## Agenda {.unnumbered}
 
 1. Access SPSS through the VCL (@sec-access).
-2. Download the dataset and its codebook within the VCL, and read the codebook
-   (@sec-codebook). Normally you would download outside the VCL, but we shortcut a step here for
-   time's sake.
+2. Download the dataset within the VCL, and read its codebook (@sec-codebook). Normally you
+   would download outside the VCL, but we shortcut a step here for time's sake.
 3. Open SPSS and review its interface.
 4. Examine the dataset: variable types, measurement levels, missing values and value labels
    (@sec-variables).
@@ -140,32 +139,29 @@ We focus today on setting up and using the VCL for SPSS.
 
 ![The VCL desktop. The IBM SPSS Statistics icon is in the second column.](images/vcl-desktop.png){fig-alt="A Windows desktop inside a browser window labeled NCSU, with two columns of shortcut icons on the left. A red box outlines the IBM SPSS Statistics icon, a white sigma on a black square."}
 
-## Download the sample data and codebook
+## Download the sample data
 
 We will be using a sample file from ABC Insurance's employee survey: one row per employee, with
 their demographics, job role, tenure, salary, performance evaluation and survey answers. It's a
-teaching dataset from [SAGE Research Methods Datasets](#sec-references). The
-**codebook** (or data dictionary) tells you what each variable means and how its values are coded.
-It's also in this guide, in @sec-codebook.
+teaching dataset from [SAGE Research Methods](#sec-references), modified for this session. Its
+**codebook** (or data dictionary), which tells you what each variable means and how its values
+are coded, is in this guide, in @sec-codebook. You only need to download the data file.
 
 ::: callout-note
-## In the VCL: download the files
+## In the VCL: download the data file
 
 1. In the VCL, open a web browser and go to this guide:
    [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
-2. Click these links to download the data file and its codebook:
-   [TeachingData.sav](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav)
-   and [SPSS Codebook.xlsx](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx).
-3. Notice the data file is named **TeachingData.sav** and the codebook is named
-   **SPSS Codebook**.
-4. Open **File Explorer** and make sure you can find where the dataset and codebook were
-   downloaded. Most likely they're in the Downloads folder of your VCL login:
+2. Click this link to download the data file:
+   [TeachingData.sav](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav).
+3. Open **File Explorer** and make sure you can find where **TeachingData.sav** was downloaded.
+   Most likely it's in the Downloads folder of your VCL login:
    **This PC > C: > Users > [your Unity ID] > Downloads**.
 :::
 
 ::: placeholder
 **Screenshot to take: `images/data-file-explorer.png`.** File Explorer in the VCL, open at
-This PC > C: > Users > [Unity ID] > Downloads, showing TeachingData.sav and SPSS Codebook.
+This PC > C: > Users > [Unity ID] > Downloads, showing TeachingData.sav.
 :::
 
 ::: {.callout-warning}
@@ -207,8 +203,7 @@ what it means, how its values are coded and how it is measured. It's how you kno
 Gender means Male, or that 99 in Evaluation means "no evaluation". Check it before you trust
 anything SPSS shows you.
 
-This is the codebook for TeachingData.sav, the same as
-[SPSS Codebook.xlsx](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx).
+This is the codebook for TeachingData.sav, adapted from the one that comes with the SAGE dataset.
 All nine variables are Numeric. The last column links down to where we use each variable, and
 **↑** links later in the guide bring you back to its row here.
 

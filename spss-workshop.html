@@ -2344,7 +2344,7 @@ window.Quarto = {
   <li><a href="#sec-access" id="toc-sec-access" class="nav-link" data-scroll-target="#sec-access"><span class="header-section-number">1</span> Student access to SPSS</a>
   <ul class="collapse">
   <li><a href="#spss-access-via-the-vcl" id="toc-spss-access-via-the-vcl" class="nav-link" data-scroll-target="#spss-access-via-the-vcl"><span class="header-section-number">1.1</span> SPSS access via the VCL</a></li>
-  <li><a href="#download-the-sample-data-and-codebook" id="toc-download-the-sample-data-and-codebook" class="nav-link" data-scroll-target="#download-the-sample-data-and-codebook"><span class="header-section-number">1.2</span> Download the sample data and codebook</a></li>
+  <li><a href="#download-the-sample-data" id="toc-download-the-sample-data" class="nav-link" data-scroll-target="#download-the-sample-data"><span class="header-section-number">1.2</span> Download the sample data</a></li>
   <li><a href="#load-your-data" id="toc-load-your-data" class="nav-link" data-scroll-target="#load-your-data"><span class="header-section-number">1.3</span> Load your data</a></li>
   </ul></li>
   <li><a href="#sec-codebook" id="toc-sec-codebook" class="nav-link" data-scroll-target="#sec-codebook"><span class="header-section-number">2</span> The codebook</a></li>
@@ -2462,7 +2462,7 @@ Conventions:
 <h2 class="unnumbered anchored" data-anchor-id="agenda">Agenda</h2>
 <ol type="1">
 <li>Access SPSS through the VCL (<a href="#sec-access" class="quarto-xref">Section 1</a>).</li>
-<li>Download the dataset and its codebook within the VCL, and read the codebook (<a href="#sec-codebook" class="quarto-xref">Section 2</a>). Normally you would download outside the VCL, but we shortcut a step here for time’s sake.</li>
+<li>Download the dataset within the VCL, and read its codebook (<a href="#sec-codebook" class="quarto-xref">Section 2</a>). Normally you would download outside the VCL, but we shortcut a step here for time’s sake.</li>
 <li>Open SPSS and review its interface.</li>
 <li>Examine the dataset: variable types, measurement levels, missing values and value labels (<a href="#sec-variables" class="quarto-xref">Section 3</a>).</li>
 <li>Run descriptive statistics and make graphs: a bar chart, a histogram and a crosstab (<a href="#sec-descriptive" class="quarto-xref">Section 4</a>).</li>
@@ -2542,29 +2542,28 @@ Conventions:
 </figure>
 </div>
 </section>
-<section id="download-the-sample-data-and-codebook" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="download-the-sample-data-and-codebook"><span class="header-section-number">1.2</span> Download the sample data and codebook</h2>
-<p>We will be using a sample file from ABC Insurance’s employee survey: one row per employee, with their demographics, job role, tenure, salary, performance evaluation and survey answers. It’s a teaching dataset from <a href="#sec-references">SAGE Research Methods Datasets</a>. The <strong>codebook</strong> (or data dictionary) tells you what each variable means and how its values are coded. It’s also in this guide, in <a href="#sec-codebook" class="quarto-xref">Section 2</a>.</p>
+<section id="download-the-sample-data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="download-the-sample-data"><span class="header-section-number">1.2</span> Download the sample data</h2>
+<p>We will be using a sample file from ABC Insurance’s employee survey: one row per employee, with their demographics, job role, tenure, salary, performance evaluation and survey answers. It’s a teaching dataset from <a href="#sec-references">SAGE Research Methods</a>, modified for this session. Its <strong>codebook</strong> (or data dictionary), which tells you what each variable means and how its values are coded, is in this guide, in <a href="#sec-codebook" class="quarto-xref">Section 2</a>. You only need to download the data file.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>In the VCL: download the files
+<span class="screen-reader-only">Note</span>In the VCL: download the data file
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>In the VCL, open a web browser and go to this guide: <a href="https://ncsu-libraries.github.io/intro-spss/">ncsu-libraries.github.io/intro-spss</a>.</li>
-<li>Click these links to download the data file and its codebook: <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav">TeachingData.sav</a> and <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx">SPSS Codebook.xlsx</a>.</li>
-<li>Notice the data file is named <strong>TeachingData.sav</strong> and the codebook is named <strong>SPSS Codebook</strong>.</li>
-<li>Open <strong>File Explorer</strong> and make sure you can find where the dataset and codebook were downloaded. Most likely they’re in the Downloads folder of your VCL login: <strong>This PC &gt; C: &gt; Users &gt; [your Unity ID] &gt; Downloads</strong>.</li>
+<li>Click this link to download the data file: <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav">TeachingData.sav</a>.</li>
+<li>Open <strong>File Explorer</strong> and make sure you can find where <strong>TeachingData.sav</strong> was downloaded. Most likely it’s in the Downloads folder of your VCL login: <strong>This PC &gt; C: &gt; Users &gt; [your Unity ID] &gt; Downloads</strong>.</li>
 </ol>
 </div>
 </div>
 <div class="placeholder">
-<p><strong>Screenshot to take: <code>images/data-file-explorer.png</code>.</strong> File Explorer in the VCL, open at This PC &gt; C: &gt; Users &gt; [Unity ID] &gt; Downloads, showing TeachingData.sav and SPSS Codebook.</p>
+<p><strong>Screenshot to take: <code>images/data-file-explorer.png</code>.</strong> File Explorer in the VCL, open at This PC &gt; C: &gt; Users &gt; [Unity ID] &gt; Downloads, showing TeachingData.sav.</p>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2610,7 +2609,7 @@ Conventions:
 <section id="sec-codebook" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> The codebook</h1>
 <p>A <strong>codebook</strong> (or data dictionary) describes every variable in a dataset: its name, its type, what it means, how its values are coded and how it is measured. It’s how you know that a 2 in Gender means Male, or that 99 in Evaluation means “no evaluation”. Check it before you trust anything SPSS shows you.</p>
-<p>This is the codebook for TeachingData.sav, the same as <a href="https://github.com/NCSU-Libraries/intro-spss/raw/main/data/SPSS%20Codebook.xlsx">SPSS Codebook.xlsx</a>. All nine variables are Numeric. The last column links down to where we use each variable, and <strong>↑</strong> links later in the guide bring you back to its row here.</p>
+<p>This is the codebook for TeachingData.sav, adapted from the one that comes with the SAGE dataset. All nine variables are Numeric. The last column links down to where we use each variable, and <strong>↑</strong> links later in the guide bring you back to its row here.</p>
 <table class="codebook caption-top table">
 <caption>The codebook for TeachingData.sav.</caption>
 <thead>
