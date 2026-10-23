@@ -96,7 +96,8 @@ SPSS is [not available for personal computer download](https://www.lib.ncsu.edu/
 for students. The best ways to access it are:
 
 1. **Using the [Virtual Computing Lab](https://vcl.ncsu.edu/scheduling) (VCL).**
-2. Locally, at Hill Library's Data Experience Lab or Hunt Library's Dataspace computers.
+2. Locally, at Hill Library's Data Experience Lab or Hunt Library's Dataspace computers. To
+   reserve one, select **Data Workstation** at [rooms.lib.ncsu.edu](https://rooms.lib.ncsu.edu).
 3. At a [Unity Computer Lab](https://ncsu.service-now.com/sp?id=kb_article_view&sysparm_article=KB0022523).
 
 We focus today on setting up and using the VCL for SPSS.
