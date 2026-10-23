@@ -25,12 +25,17 @@ format:
         div.callout-note .callout-icon::before { filter: hue-rotate(10deg) saturate(1.4); }
         div.callout-note .callout-body-container ol { margin-bottom: 0.25rem; }
         p code, li code, td code { overflow-wrap: anywhere; }
+        mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
         /* The codebook table: compact, top-aligned, variable names bold. */
         table.codebook { font-size: 0.875rem; }
         table.codebook td, table.codebook th { vertical-align: top; }
         table.codebook td:first-child { font-weight: 600; white-space: nowrap; }
         table.codebook td:nth-child(3), table.codebook td:last-child { white-space: nowrap; }
-        @media (max-width: 700px) { table.codebook td { white-space: normal !important; } }
+        @media (max-width: 700px) {
+          table.codebook { display: block; overflow-x: auto; }
+          table.codebook td { white-space: normal !important; min-width: 7rem; }
+          table.codebook td:nth-child(2) { min-width: 12rem; }
+        }
         span[id^="cb-"]:target, tr:has(span[id^="cb-"]:target) td { background: #fef3c7; }
         </style>
 ---
@@ -512,9 +517,13 @@ population means are significantly different. You need two variables for this te
 
 The null and alternative hypotheses of a one-way ANOVA are:
 
-$$H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k \quad \text{(all } k \text{ population means are equal)}$$
+$$H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k$$
 
-$$H_1: \text{at least one } \mu_i \text{ is different} \quad \text{(at least one of the } k \text{ population means is not equal to the others)}$$
+All $k$ population means are equal.
+
+$$H_1: \text{at least one } \mu_i \text{ is different}$$
+
+At least one of the $k$ population means is not equal to the others.
 
 where $\mu_i$ is the population mean of the $i^{th}$ group, $i = 1, \dots, k$.
 
@@ -654,7 +663,7 @@ you leave, so you can get to it from outside the VCL.
   [SPSS Statistics Essential Training](https://www.linkedin.com/learning/spss-statistics-essential-training-2/navigating-spss?autoplay=true&resume=false&u=53565897).
   - NC State students have access to LinkedIn Learning, which is also useful for learning other
     topics, with thousands of videos on software, business and more.
-- **Online book-style tutorial:** [UCLA OARC SPSS modules](https://stats.idre.ucla.edu/spss/modules/).
+- **Online book-style tutorial:** [UCLA OARC SPSS modules](https://stats.oarc.ucla.edu/spss/modules/).
   - Focuses more on syntax (code) than on the point-and-click interface. SPSS syntax opens up
     custom analyses and data processing.
 - **Asynchronous library guide tutorial:** [Kent State University Libraries, SPSS
@@ -721,9 +730,13 @@ categorical (nominal or ordinal) with exactly two categories.
 
 The hypotheses for our question are:
 
-$$H_0: \mu_{Male} - \mu_{Female} = 0 \quad \text{(the difference of the means is equal to zero)}$$
+$$H_0: \mu_{Male} - \mu_{Female} = 0$$
 
-$$H_1: \mu_{Male} - \mu_{Female} \neq 0 \quad \text{(the difference of the means is not equal to zero)}$$
+The difference of the means is equal to zero.
+
+$$H_1: \mu_{Male} - \mu_{Female} \neq 0$$
+
+The difference of the means is not equal to zero.
 
 where $\mu_{Male}$ and $\mu_{Female}$ are the population means for men and women.
 
@@ -794,9 +807,13 @@ different from 4.1 with a one-sample t test.
 
 The null and alternative hypotheses are:
 
-$$H_0: \mu_{Tenure} = 4.1 \quad \text{(the mean Tenure is equal to 4.1)}$$
+$$H_0: \mu_{Tenure} = 4.1$$
 
-$$H_1: \mu_{Tenure} \neq 4.1 \quad \text{(the mean Tenure is not equal to 4.1)}$$
+The mean Tenure is equal to 4.1.
+
+$$H_1: \mu_{Tenure} \neq 4.1$$
+
+The mean Tenure is not equal to 4.1.
 
 where $\mu_{Tenure}$ is the mean tenure.
 

@@ -2177,12 +2177,17 @@ div.callout-note .callout-title-container { color: #1f4e79; font-weight: 600; }
 div.callout-note .callout-icon::before { filter: hue-rotate(10deg) saturate(1.4); }
 div.callout-note .callout-body-container ol { margin-bottom: 0.25rem; }
 p code, li code, td code { overflow-wrap: anywhere; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
 
 table.codebook { font-size: 0.875rem; }
 table.codebook td, table.codebook th { vertical-align: top; }
 table.codebook td:first-child { font-weight: 600; white-space: nowrap; }
 table.codebook td:nth-child(3), table.codebook td:last-child { white-space: nowrap; }
-@media (max-width: 700px) { table.codebook td { white-space: normal !important; } }
+@media (max-width: 700px) {
+table.codebook { display: block; overflow-x: auto; }
+table.codebook td { white-space: normal !important; min-width: 7rem; }
+table.codebook td:nth-child(2) { min-width: 12rem; }
+}
 span[id^="cb-"]:target, tr:has(span[id^="cb-"]:target) td { background: #fef3c7; }
 </style>
 
@@ -3107,8 +3112,10 @@ Conventions:
 <li>An <strong>independent variable</strong> that is categorical (two or more groups).</li>
 </ul>
 <p>The null and alternative hypotheses of a one-way ANOVA are:</p>
-<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k \quad \text{(all } k \text{ population means are equal)}\]</span></p>
-<p><span class="math display">\[H_1: \text{at least one } \mu_i \text{ is different} \quad \text{(at least one of the } k \text{ population means is not equal to the others)}\]</span></p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_k\]</span></p>
+<p>All <span class="math inline">\(k\)</span> population means are equal.</p>
+<p><span class="math display">\[H_1: \text{at least one } \mu_i \text{ is different}\]</span></p>
+<p>At least one of the <span class="math inline">\(k\)</span> population means is not equal to the others.</p>
 <p>where <span class="math inline">\(\mu_i\)</span> is the population mean of the <span class="math inline">\(i^{th}\)</span> group, <span class="math inline">\(i = 1, \dots, k\)</span>.</p>
 <p>In the sample dataset, <strong>SalaryContinuous</strong> is an employee’s annual salary (<a href="#cb-salarycontinuous">codebook ↑</a>), and <strong>JobRole</strong> is the employee’s current position within ABC Insurance (<a href="#cb-jobrole">codebook ↑</a>). Let’s use ANOVA to test whether salary differs significantly by job role. SalaryContinuous is the dependent variable and JobRole is the independent variable.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -3283,7 +3290,7 @@ Conventions:
 <ul>
 <li>NC State students have access to LinkedIn Learning, which is also useful for learning other topics, with thousands of videos on software, business and more.</li>
 </ul></li>
-<li><strong>Online book-style tutorial:</strong> <a href="https://stats.idre.ucla.edu/spss/modules/">UCLA OARC SPSS modules</a>.
+<li><strong>Online book-style tutorial:</strong> <a href="https://stats.oarc.ucla.edu/spss/modules/">UCLA OARC SPSS modules</a>.
 <ul>
 <li>Focuses more on syntax (code) than on the point-and-click interface. SPSS syntax opens up custom analyses and data processing.</li>
 </ul></li>
@@ -3349,8 +3356,10 @@ Conventions:
 <p>One question we might ask is whether average tenure is different for male and female employees. That means testing whether the sample means of tenure for men and women are statistically different, which an independent-samples t test does.</p>
 <p>An independent-samples t test tells you whether there is a difference between the means of two groups on a particular variable. The dependent variable (<strong>Test Variable</strong>) must be continuous (interval or ratio level), and the independent variable (<strong>Grouping Variable</strong>) must be categorical (nominal or ordinal) with exactly two categories.</p>
 <p>The hypotheses for our question are:</p>
-<p><span class="math display">\[H_0: \mu_{Male} - \mu_{Female} = 0 \quad \text{(the difference of the means is equal to zero)}\]</span></p>
-<p><span class="math display">\[H_1: \mu_{Male} - \mu_{Female} \neq 0 \quad \text{(the difference of the means is not equal to zero)}\]</span></p>
+<p><span class="math display">\[H_0: \mu_{Male} - \mu_{Female} = 0\]</span></p>
+<p>The difference of the means is equal to zero.</p>
+<p><span class="math display">\[H_1: \mu_{Male} - \mu_{Female} \neq 0\]</span></p>
+<p>The difference of the means is not equal to zero.</p>
 <p>where <span class="math inline">\(\mu_{Male}\)</span> and <span class="math inline">\(\mu_{Female}\)</span> are the population means for men and women.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -3418,8 +3427,10 @@ Conventions:
 <p>A one-sample t test tells you whether a sample mean is statistically different from a population value. The test variable must be continuous (interval or ratio level).</p>
 <p>According to the <a href="https://www.bls.gov/news.release/pdf/tenure.pdf">Bureau of Labor Statistics</a>, the <em>median</em> number of years that wage and salary workers had been with their current employer was 4.1 years in January 2026. We want to test whether the sample mean of Tenure is significantly different from 4.1 with a one-sample t test.</p>
 <p>The null and alternative hypotheses are:</p>
-<p><span class="math display">\[H_0: \mu_{Tenure} = 4.1 \quad \text{(the mean Tenure is equal to 4.1)}\]</span></p>
-<p><span class="math display">\[H_1: \mu_{Tenure} \neq 4.1 \quad \text{(the mean Tenure is not equal to 4.1)}\]</span></p>
+<p><span class="math display">\[H_0: \mu_{Tenure} = 4.1\]</span></p>
+<p>The mean Tenure is equal to 4.1.</p>
+<p><span class="math display">\[H_1: \mu_{Tenure} \neq 4.1\]</span></p>
+<p>The mean Tenure is not equal to 4.1.</p>
 <p>where <span class="math inline">\(\mu_{Tenure}\)</span> is the mean tenure.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
