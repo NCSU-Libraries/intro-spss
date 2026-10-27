@@ -5,7 +5,8 @@ introduction we can teach in any class. Students reach SPSS through the Virtual 
 sample employee survey, and run descriptive statistics, a crosstab with a chi-square test, a
 correlation, a one-way ANOVA and a simple linear regression, then export their output.
 
-The guide is online at https://ncsu-libraries.github.io/intro-spss/.
+The guide is online at https://go.ncsu.edu/dss-intro-spss (which redirects to
+https://ncsu-libraries.github.io/intro-spss/spss-workshop.html).
 
 - `spss-workshop.qmd`: the guide we work from in the session. Steps to do in SPSS, the VCL or the
   browser are in blue boxes; everything else is explanation. `spss-workshop.html` is the rendered,

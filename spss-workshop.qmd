@@ -36,6 +36,13 @@ format:
           table.codebook td { white-space: normal !important; min-width: 7rem; }
           table.codebook td:nth-child(2) { min-width: 12rem; }
         }
+        /* The short link to this guide, at the top of the page. */
+        .golink { text-align: center; font-size: 1.5rem; font-weight: 600; color: #1f4e79;
+          background: #e8f0f8; border: 2px solid #1f4e79; border-radius: 6px;
+          padding: 0.75rem 1rem; margin: 0 0 1.5rem; overflow-wrap: anywhere; }
+        .golink p { margin: 0; }
+        .golink a { color: #1f4e79; }
+        .golink .golink-label { display: block; font-size: 1rem; font-weight: 400; color: #212529; }
         span[id^="cb-"]:target, tr:has(span[id^="cb-"]:target) td { background: #fef3c7; }
         </style>
 ---
@@ -53,6 +60,11 @@ Conventions:
   planning/session-outline.md.
 -->
 
+::: {.golink}
+[Open this guide anywhere, including in the VCL:]{.golink-label}
+[go.ncsu.edu/dss-intro-spss](https://go.ncsu.edu/dss-intro-spss)
+:::
+
 ::: callout-important
 ## How to use this guide
 
@@ -64,8 +76,6 @@ catch up if you fall behind, and come back to it later.
 - **The codebook is in @sec-codebook.** Links marked **↑** or **↓** jump to a variable's row in
   it, and each row links on to the places we use that variable.
 - **Have your phone ready.** You'll confirm your NC State login with Duo more than once.
-- This guide is online at
-  [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
 :::
 
 # Welcome {.unnumbered}
@@ -153,7 +163,7 @@ are coded, is in this guide, in @sec-codebook. You only need to download the dat
 ## In the VCL: download the data file
 
 1. In the VCL, open a web browser and go to this guide:
-   [ncsu-libraries.github.io/intro-spss](https://ncsu-libraries.github.io/intro-spss/).
+   [go.ncsu.edu/dss-intro-spss](https://go.ncsu.edu/dss-intro-spss).
 2. Click this link to download the data file:
    [TeachingData.sav](https://github.com/NCSU-Libraries/intro-spss/raw/main/data/TeachingData.sav).
 3. Open **File Explorer** and make sure you can find where **TeachingData.sav** was downloaded.
